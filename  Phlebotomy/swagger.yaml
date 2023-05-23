@@ -1,0 +1,119 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a simple API",
+    "version" : "1.0.0",
+    "title" : "Simple Inventory API",
+    "contact" : {
+      "email" : "you@your-company.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/chinmaysoni123/test1/1.0.0",
+  "tags" : [ {
+    "name" : "admins",
+    "description" : "Secured Admin-only calls"
+  }, {
+    "name" : "developers",
+    "description" : "Operations available to regular developers"
+  } ],
+  "schemes" : [ "https" ],
+  "paths" : {
+    "/login" : {
+      "post" : {
+        "tags" : [ "developers" ],
+        "summary" : "login session",
+        "description" : "By passing username and password you can login with session token\n",
+        "operationId" : "login",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "e_id_or_m_no",
+          "in" : "query",
+          "description" : "pass an email_id or mobile number",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "password",
+          "in" : "query",
+          "description" : "enter a valid password",
+          "required" : true,
+          "type" : "string",
+          "minimum" : 8
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "you logged in sucessfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200"
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "first_name" : {
+      "type" : "string",
+      "example" : "Pavan123"
+    },
+    "session" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/session_data"
+          }
+        }
+      },
+      "description" : "it gives session token"
+    },
+    "inline_response_200" : {
+      "type" : "object",
+      "properties" : {
+        "session" : {
+          "$ref" : "#/definitions/session"
+        }
+      }
+    },
+    "session_user" : {
+      "type" : "object",
+      "properties" : {
+        "user_id" : {
+          "type" : "string",
+          "example" : "123"
+        },
+        "profile_image" : {
+          "type" : "string",
+          "example" : "https://lh3.googleusercontent.com/ogw/AOLn63GYQ3uohe6sVntykFZgEXNMx93yaO0hx5Ggy9Cryw=s32-c-mo"
+        },
+        "first_name" : {
+          "$ref" : "#/definitions/first_name"
+        },
+        "location" : {
+          "type" : "string",
+          "example" : "Shaikpet Main Rd, Hyderabad"
+        }
+      }
+    },
+    "session_data" : {
+      "type" : "object",
+      "properties" : {
+        "token" : {
+          "type" : "string",
+          "example" : "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NjQ1LCJleHAiOjE3MTYzNzE4MDF9.9Jmn5F8eFnx6tzlcJRSPyy6475t1r9mKbRR27n3f9TuyEZI0ktOPXmWOv8yqRniDcm_oFrLUr7qcnoz14YaLGA"
+        },
+        "user" : {
+          "$ref" : "#/definitions/session_user"
+        }
+      }
+    }
+  }
+}
