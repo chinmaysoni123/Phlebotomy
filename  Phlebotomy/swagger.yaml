@@ -371,6 +371,51 @@
           }
         }
       }
+    },
+    "/select_order_type" : {
+      "put" : {
+        "tags" : [ "developers" ],
+        "summary" : "select_order_type details",
+        "description" : "By passing session token you can get the analyst details\n",
+        "operationId" : "select_order_type",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format Bearer {token}",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "pick_high_priority_and_deliver",
+          "in" : "query",
+          "description" : "Pick High Priority and Deliver",
+          "required" : true,
+          "type" : "boolean"
+        }, {
+          "name" : "pick_one_and_deliver",
+          "in" : "query",
+          "description" : "Pick One and Deliver",
+          "required" : true,
+          "type" : "boolean"
+        }, {
+          "name" : "pick_all_and_deliver",
+          "in" : "query",
+          "description" : "Pick all and Deliver",
+          "required" : true,
+          "type" : "boolean"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "select_order_type fetched successfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_9"
+            }
+          },
+          "400" : {
+            "description" : "bad input"
+          }
+        }
+      }
     }
   },
   "definitions" : {
@@ -461,17 +506,39 @@
         }
       }
     },
-    "todays_list" : {
+    "todays_list_object" : {
       "type" : "object",
       "properties" : {
-        "patient_details" : {
-          "$ref" : "#/definitions/todays_list_patient_details"
+        "user_id" : {
+          "type" : "string",
+          "example" : "123"
         },
-        "patient_details1" : {
-          "$ref" : "#/definitions/todays_list_patient_details1"
+        "full_name" : {
+          "$ref" : "#/definitions/first_name"
         },
-        "patient_details2" : {
-          "$ref" : "#/definitions/todays_list_patient_details2"
+        "address" : {
+          "type" : "string",
+          "example" : "Puppalaguda, manikonda Hyderabad-500089"
+        },
+        "priority" : {
+          "type" : "string",
+          "example" : "High Priority"
+        },
+        "status" : {
+          "type" : "string",
+          "example" : "To Be Picked"
+        },
+        "sample_type" : {
+          "type" : "string",
+          "example" : "Blood Sample"
+        },
+        "time" : {
+          "type" : "string",
+          "example" : "10:30AM"
+        },
+        "order_id" : {
+          "type" : "string",
+          "example" : "2"
         }
       }
     },
@@ -493,6 +560,19 @@
         "id" : {
           "type" : "integer",
           "format" : "int64"
+        }
+      }
+    },
+    "select_order_type1" : {
+      "type" : "object",
+      "properties" : {
+        "pick_high_priority_and_deliver" : {
+          "type" : "boolean",
+          "example" : true
+        },
+        "pick_one_and_deliver" : {
+          "type" : "boolean",
+          "example" : true
         }
       }
     },
@@ -568,8 +648,27 @@
       "properties" : {
         "data" : {
           "type" : "array",
+          "example" : [ {
+            "user_id" : "12",
+            "full_name" : "kasa rakesh",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "To Be Picked",
+            "sample_type" : "Blood Sample",
+            "time" : "04:30PM",
+            "order_id" : "1"
+          }, {
+            "user_id" : "13",
+            "full_name" : "Pavan reddy",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "To Be Picked",
+            "sample_type" : "Blood Sample",
+            "time" : "10:30AM",
+            "order_id" : "2"
+          } ],
           "items" : {
-            "$ref" : "#/definitions/todays_list"
+            "$ref" : "#/definitions/todays_list_object"
           }
         }
       }
@@ -587,6 +686,14 @@
       "properties" : {
         "success" : {
           "$ref" : "#/definitions/phlebotomist_analysis"
+        }
+      }
+    },
+    "inline_response_200_9" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/select_order_type1"
         }
       }
     },
@@ -843,114 +950,6 @@
         "order_id" : {
           "type" : "string",
           "example" : "2"
-        }
-      }
-    },
-    "todays_list_patient_details" : {
-      "type" : "object",
-      "properties" : {
-        "user_id" : {
-          "type" : "string",
-          "example" : "123"
-        },
-        "full_name" : {
-          "$ref" : "#/definitions/first_name"
-        },
-        "address" : {
-          "type" : "string",
-          "example" : "Puppalaguda, manikonda Hyderabad-500089"
-        },
-        "priority" : {
-          "type" : "string",
-          "example" : "High Priority"
-        },
-        "status" : {
-          "type" : "string",
-          "example" : "To Be Picked"
-        },
-        "sample_type" : {
-          "type" : "string",
-          "example" : "Blood Sample"
-        },
-        "time" : {
-          "type" : "string",
-          "example" : "10:30AM"
-        },
-        "order_id" : {
-          "type" : "string",
-          "example" : "2"
-        }
-      }
-    },
-    "todays_list_patient_details1" : {
-      "type" : "object",
-      "properties" : {
-        "user_id" : {
-          "type" : "string",
-          "example" : "123"
-        },
-        "full_name" : {
-          "$ref" : "#/definitions/first_name"
-        },
-        "address" : {
-          "type" : "string",
-          "example" : "Puppalaguda, manikonda Hyderabad-500089"
-        },
-        "priority" : {
-          "type" : "string",
-          "example" : "High Priority"
-        },
-        "status" : {
-          "type" : "string",
-          "example" : "To Be Picked"
-        },
-        "sample_type" : {
-          "type" : "string",
-          "example" : "Blood Sample"
-        },
-        "time" : {
-          "type" : "string",
-          "example" : "10:30AM"
-        },
-        "order_id" : {
-          "type" : "string",
-          "example" : "3"
-        }
-      }
-    },
-    "todays_list_patient_details2" : {
-      "type" : "object",
-      "properties" : {
-        "user_id" : {
-          "type" : "string",
-          "example" : "123"
-        },
-        "full_name" : {
-          "$ref" : "#/definitions/first_name"
-        },
-        "address" : {
-          "type" : "string",
-          "example" : "Puppalaguda, manikonda Hyderabad-500089"
-        },
-        "priority" : {
-          "type" : "string",
-          "example" : "High Priority"
-        },
-        "status" : {
-          "type" : "string",
-          "example" : "To Be Picked"
-        },
-        "sample_type" : {
-          "type" : "string",
-          "example" : "Blood Sample"
-        },
-        "time" : {
-          "type" : "string",
-          "example" : "10:30AM"
-        },
-        "order_id" : {
-          "type" : "string",
-          "example" : "4"
         }
       }
     },
