@@ -310,7 +310,7 @@
             "description" : "Unauthorized.Invalid session token."
           },
           "500" : {
-            "description" : "Internal server error. Failed to submit patient details."
+            "description" : "Internal server error."
           }
         }
       }
@@ -340,7 +340,235 @@
             "description" : "Unauthorized.Invalid session token."
           },
           "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/rescheduled_list" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "rescheduled list",
+        "description" : "Rescheduled list of analyst.\n",
+        "operationId" : "rescheduled list",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "today's list of collection.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_8"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
             "description" : "Internal server error. Failed to submit patient details."
+          }
+        }
+      }
+    },
+    "/unverified_list" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "unverified list",
+        "description" : "unverified list of analyst.\n",
+        "operationId" : "unverified list",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "today's list of collection.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_9"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/cancelled_list" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "cancelled list",
+        "description" : "cancelled list of analyst.\n",
+        "operationId" : "cancelled list",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "today's list of collection.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_10"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/delivery_pending_list" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "delivery pending list",
+        "description" : "delivery pending list of analyst.\n",
+        "operationId" : "delivery pending list",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "today's list of collection.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_11"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/delivered_list" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "delivered list",
+        "description" : "delivered  list of analyst.\n",
+        "operationId" : "delivered list",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "today's list of collection.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_12"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/update_status" : {
+      "put" : {
+        "tags" : [ "developers" ],
+        "summary" : "update status list",
+        "description" : "update the status of order.\n",
+        "operationId" : "update status list",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "today's list of collection.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_13"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/select_order_type" : {
+      "post" : {
+        "tags" : [ "developers" ],
+        "summary" : "select order type",
+        "description" : "select order type.\n",
+        "operationId" : "select order type",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "pick_high_priority_and_deliver",
+          "in" : "query",
+          "description" : "select type",
+          "required" : false,
+          "type" : "boolean"
+        }, {
+          "name" : "pick_one_and_deliver",
+          "in" : "query",
+          "description" : "select type",
+          "required" : false,
+          "type" : "boolean"
+        }, {
+          "name" : "pick_all_and_deliver",
+          "in" : "query",
+          "description" : "select type",
+          "required" : false,
+          "type" : "boolean"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "select order type.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_14"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error."
           }
         }
       }
@@ -363,52 +591,7 @@
           "200" : {
             "description" : "analyst details fetched successfully",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_8"
-            }
-          },
-          "400" : {
-            "description" : "bad input"
-          }
-        }
-      }
-    },
-    "/select_order_type" : {
-      "put" : {
-        "tags" : [ "developers" ],
-        "summary" : "select_order_type details",
-        "description" : "By passing session token you can get the analyst details\n",
-        "operationId" : "select_order_type",
-        "produces" : [ "application/json" ],
-        "parameters" : [ {
-          "name" : "Authorization",
-          "in" : "header",
-          "description" : "The session token in the format Bearer {token}",
-          "required" : false,
-          "type" : "string"
-        }, {
-          "name" : "pick_high_priority_and_deliver",
-          "in" : "query",
-          "description" : "Pick High Priority and Deliver",
-          "required" : true,
-          "type" : "boolean"
-        }, {
-          "name" : "pick_one_and_deliver",
-          "in" : "query",
-          "description" : "Pick One and Deliver",
-          "required" : true,
-          "type" : "boolean"
-        }, {
-          "name" : "pick_all_and_deliver",
-          "in" : "query",
-          "description" : "Pick all and Deliver",
-          "required" : true,
-          "type" : "boolean"
-        } ],
-        "responses" : {
-          "200" : {
-            "description" : "select_order_type fetched successfully",
-            "schema" : {
-              "$ref" : "#/definitions/inline_response_200_9"
+              "$ref" : "#/definitions/inline_response_200_15"
             }
           },
           "400" : {
@@ -497,10 +680,27 @@
         }
       }
     },
+    "select_type" : {
+      "type" : "object",
+      "properties" : {
+        "pick_high_priority_and_deliver" : {
+          "type" : "boolean",
+          "example" : true
+        },
+        "pick_one_deliver" : {
+          "type" : "boolean",
+          "example" : false
+        },
+        "pick_all_and_deliver" : {
+          "type" : "boolean",
+          "example" : false
+        }
+      }
+    },
     "otp_samples" : {
       "type" : "object",
       "properties" : {
-        "patient_details" : {
+        "response" : {
           "type" : "string",
           "example" : "OTP verfied successfully"
         }
@@ -560,19 +760,6 @@
         "id" : {
           "type" : "integer",
           "format" : "int64"
-        }
-      }
-    },
-    "select_order_type1" : {
-      "type" : "object",
-      "properties" : {
-        "pick_high_priority_and_deliver" : {
-          "type" : "boolean",
-          "example" : true
-        },
-        "pick_one_and_deliver" : {
-          "type" : "boolean",
-          "example" : true
         }
       }
     },
@@ -655,7 +842,7 @@
             "priority" : "High Priority",
             "status" : "To Be Picked",
             "sample_type" : "Blood Sample",
-            "time" : "04:30PM",
+            "date_time" : "2023-05-26T12:26:45+05:30",
             "order_id" : "1"
           }, {
             "user_id" : "13",
@@ -664,7 +851,7 @@
             "priority" : "High Priority",
             "status" : "To Be Picked",
             "sample_type" : "Blood Sample",
-            "time" : "10:30AM",
+            "date_time" : "2023-05-26T12:26:45+05:30",
             "order_id" : "2"
           } ],
           "items" : {
@@ -681,11 +868,71 @@
         }
       }
     },
+    "inline_response_200_8_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "user_id" : "12",
+            "full_name" : "kasa rakesh",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "rescheduled",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "1"
+          }, {
+            "user_id" : "13",
+            "full_name" : "Pavan reddy",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "rescheduled",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "2"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/todays_list_object"
+          }
+        }
+      }
+    },
     "inline_response_200_8" : {
       "type" : "object",
       "properties" : {
         "success" : {
-          "$ref" : "#/definitions/phlebotomist_analysis"
+          "$ref" : "#/definitions/inline_response_200_8_success"
+        }
+      }
+    },
+    "inline_response_200_9_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "user_id" : "12",
+            "full_name" : "kasa rakesh",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "unverified",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "1"
+          }, {
+            "user_id" : "13",
+            "full_name" : "Pavan reddy",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "unverified",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "2"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/todays_list_object"
+          }
         }
       }
     },
@@ -693,7 +940,175 @@
       "type" : "object",
       "properties" : {
         "success" : {
-          "$ref" : "#/definitions/select_order_type1"
+          "$ref" : "#/definitions/inline_response_200_9_success"
+        }
+      }
+    },
+    "inline_response_200_10_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "user_id" : "12",
+            "full_name" : "kasa rakesh",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "cancelled",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "1"
+          }, {
+            "user_id" : "13",
+            "full_name" : "Pavan reddy",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "cancelled",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "2"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/todays_list_object"
+          }
+        }
+      }
+    },
+    "inline_response_200_10" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_10_success"
+        }
+      }
+    },
+    "inline_response_200_11_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "user_id" : "12",
+            "full_name" : "kasa rakesh",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "delivery pending",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "1"
+          }, {
+            "user_id" : "13",
+            "full_name" : "Pavan reddy",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "delivery pending",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "2"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/todays_list_object"
+          }
+        }
+      }
+    },
+    "inline_response_200_11" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_11_success"
+        }
+      }
+    },
+    "inline_response_200_12_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "user_id" : "12",
+            "full_name" : "kasa rakesh",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "delivered",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "1"
+          }, {
+            "user_id" : "13",
+            "full_name" : "Pavan reddy",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "delivered",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "2"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/todays_list_object"
+          }
+        }
+      }
+    },
+    "inline_response_200_12" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_12_success"
+        }
+      }
+    },
+    "inline_response_200_13_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "user_id" : "12",
+            "full_name" : "kasa rakesh",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "arrived",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "1"
+          }, {
+            "user_id" : "13",
+            "full_name" : "Pavan reddy",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "arrived",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "2"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/todays_list_object"
+          }
+        }
+      }
+    },
+    "inline_response_200_13" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_13_success"
+        }
+      }
+    },
+    "inline_response_200_14" : {
+      "type" : "object",
+      "properties" : {
+        "response" : {
+          "$ref" : "#/definitions/select_type"
+        }
+      }
+    },
+    "inline_response_200_15" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/phlebotomist_analysis"
         }
       }
     },
