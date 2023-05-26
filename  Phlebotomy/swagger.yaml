@@ -23,6 +23,33 @@
   } ],
   "schemes" : [ "https" ],
   "paths" : {
+    "/unassigned_orders" : {
+      "get" : {
+        "tags" : [ "admins" ],
+        "summary" : "admin_unassigned_orders",
+        "description" : "By passing  with session token you can acess the unassigned orders\n",
+        "operationId" : "admin_unassigned_orders",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "you logged in sucessfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200"
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
     "/login" : {
       "post" : {
         "tags" : [ "developers" ],
@@ -48,7 +75,7 @@
           "200" : {
             "description" : "you logged in sucessfully",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200"
+              "$ref" : "#/definitions/inline_response_200_1"
             }
           },
           "400" : {
@@ -56,12 +83,397 @@
           }
         }
       }
+    },
+    "/profile" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "show profile",
+        "description" : "By passing session token you can get the profile details\n",
+        "operationId" : "profile",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "profile details fetched sucessfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_2"
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/edit_profile" : {
+      "put" : {
+        "tags" : [ "developers" ],
+        "summary" : "edit profile",
+        "description" : "Edit the profile details by passing a session token.\n",
+        "operationId" : "profile1",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "full_name",
+          "in" : "query",
+          "description" : "Enter full name",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "email",
+          "in" : "query",
+          "description" : "Enter email",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "date_of_birth",
+          "in" : "query",
+          "description" : "Enter date of birth",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "full_phone_number",
+          "in" : "query",
+          "description" : "Enter full phone number",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Profile details successfully retrieved.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_2"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized. Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error. Failed to retrieve profile details."
+          }
+        }
+      }
+    },
+    "/patient_details" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "fetch patient details",
+        "description" : "Fetch patient details by passing session token and patient id.\n",
+        "operationId" : "patient details",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "p_id",
+          "in" : "query",
+          "description" : "passing patient id",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Patient details successfully retrieved.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_3"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error. Failed to retrieve patient details."
+          }
+        }
+      }
+    },
+    "/submit_patient_details" : {
+      "post" : {
+        "tags" : [ "developers" ],
+        "summary" : "submit patient details",
+        "description" : "Fetch patient details by passing session token and patient id.\n",
+        "operationId" : "submit patient details",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "order_id",
+          "in" : "query",
+          "description" : "passing order id",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "patient details successfully submitted.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_4"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error. Failed to submit patient details."
+          }
+        }
+      }
+    },
+    "/collect_samples" : {
+      "post" : {
+        "tags" : [ "developers" ],
+        "summary" : "collect patient samples",
+        "description" : "Collect patient samples by passing session token and order id.\n",
+        "operationId" : "collect samples",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "order_id",
+          "in" : "query",
+          "description" : "passing order id",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OTP sent successfully.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_5"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error. Failed to send otp."
+          }
+        }
+      }
+    },
+    "/otp_for_samples" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "otp to verify samples",
+        "description" : "Verify otp to samples by passing otp and session token and order id.\n",
+        "operationId" : "otp for samples verification",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "order_id",
+          "in" : "query",
+          "description" : "passing order id",
+          "required" : false,
+          "type" : "string"
+        }, {
+          "name" : "otp",
+          "in" : "query",
+          "description" : "enter otp",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OTP verified successfully.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_6"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error. Failed to submit patient details."
+          }
+        }
+      }
+    },
+    "/todays_list" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "todays list",
+        "description" : "Todays list of analyst.\n",
+        "operationId" : "todays list",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "today's list of collection.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_7"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error. Failed to submit patient details."
+          }
+        }
+      }
+    },
+    "/analyst" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "analyst details",
+        "description" : "By passing session token you can get the analyst details\n",
+        "operationId" : "analyst",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "analyst details fetched successfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_8"
+            }
+          },
+          "400" : {
+            "description" : "bad input"
+          }
+        }
+      }
     }
   },
   "definitions" : {
+    "unassigned_orders" : {
+      "type" : "object",
+      "properties" : {
+        "order_id" : {
+          "type" : "string",
+          "example" : "99999"
+        },
+        "patient_name" : {
+          "type" : "string",
+          "example" : "chinmay123"
+        },
+        "phone_number" : {
+          "type" : "string",
+          "example" : "8125400447"
+        },
+        "location" : {
+          "type" : "string",
+          "example" : "Puppalaguda, manikonda Hyderabad-500089"
+        },
+        "sample_type" : {
+          "type" : "string",
+          "example" : "blood"
+        },
+        "schedule_date_time" : {
+          "type" : "string",
+          "example" : "2023-05-25 20:56:07 +0530"
+        },
+        "status" : {
+          "type" : "string",
+          "example" : "unassign"
+        }
+      }
+    },
     "first_name" : {
       "type" : "string",
       "example" : "Pavan123"
+    },
+    "phlebotomist_analysis" : {
+      "type" : "object",
+      "properties" : {
+        "user_details" : {
+          "$ref" : "#/definitions/phlebotomist_analysis_user_details"
+        }
+      }
+    },
+    "profile_details" : {
+      "type" : "object",
+      "properties" : {
+        "user_details" : {
+          "$ref" : "#/definitions/profile_details_user_details"
+        }
+      }
+    },
+    "submit_patient_details" : {
+      "type" : "object",
+      "properties" : {
+        "patient_details" : {
+          "$ref" : "#/definitions/submit_patient_details_patient_details"
+        }
+      }
+    },
+    "patient_details" : {
+      "type" : "object",
+      "properties" : {
+        "patient_details" : {
+          "$ref" : "#/definitions/patient_details_patient_details"
+        }
+      }
+    },
+    "collect_samples" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "Verify OTP (123456) to collect"
+        }
+      }
+    },
+    "otp_samples" : {
+      "type" : "object",
+      "properties" : {
+        "patient_details" : {
+          "type" : "string",
+          "example" : "OTP verfied successfully"
+        }
+      }
+    },
+    "todays_list" : {
+      "type" : "object",
+      "properties" : {
+        "patient_details" : {
+          "$ref" : "#/definitions/todays_list_patient_details"
+        },
+        "patient_details1" : {
+          "$ref" : "#/definitions/todays_list_patient_details1"
+        },
+        "patient_details2" : {
+          "$ref" : "#/definitions/todays_list_patient_details2"
+        }
+      }
     },
     "session" : {
       "type" : "object",
@@ -75,11 +487,470 @@
       },
       "description" : "it gives session token"
     },
+    "Phlebotomist analysis" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "inline_response_200_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/unassigned_orders"
+          }
+        }
+      }
+    },
     "inline_response_200" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_success"
+        }
+      }
+    },
+    "inline_response_200_1" : {
       "type" : "object",
       "properties" : {
         "session" : {
           "$ref" : "#/definitions/session"
+        }
+      }
+    },
+    "inline_response_200_2" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/profile_details"
+        }
+      }
+    },
+    "inline_response_200_3" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/patient_details"
+        }
+      }
+    },
+    "inline_response_200_4" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/submit_patient_details"
+        }
+      }
+    },
+    "inline_response_200_5" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/collect_samples"
+        }
+      }
+    },
+    "inline_response_200_6" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/otp_samples"
+        }
+      }
+    },
+    "inline_response_200_7_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/todays_list"
+          }
+        }
+      }
+    },
+    "inline_response_200_7" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_7_success"
+        }
+      }
+    },
+    "inline_response_200_8" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/phlebotomist_analysis"
+        }
+      }
+    },
+    "phlebotomist_analysis_user_details_performance" : {
+      "type" : "object",
+      "properties" : {
+        "total_assigned_orders" : {
+          "type" : "string",
+          "example" : "200"
+        },
+        "delivered" : {
+          "type" : "string",
+          "example" : "102"
+        },
+        "cancelled" : {
+          "type" : "string",
+          "example" : "100"
+        },
+        "preparing" : {
+          "type" : "string",
+          "example" : "100"
+        },
+        "rescheduled" : {
+          "type" : "string",
+          "example" : "100"
+        }
+      }
+    },
+    "phlebotomist_analysis_user_details_overview" : {
+      "type" : "object",
+      "properties" : {
+        "medium" : {
+          "type" : "string",
+          "example" : "38"
+        },
+        "high" : {
+          "type" : "string",
+          "example" : "75"
+        },
+        "low" : {
+          "type" : "string",
+          "example" : "55"
+        }
+      }
+    },
+    "phlebotomist_analysis_user_details_reviews_and_ratings_rating" : {
+      "type" : "object",
+      "properties" : {
+        "1_star" : {
+          "type" : "string",
+          "example" : "1"
+        },
+        "2_star" : {
+          "type" : "string",
+          "example" : "2"
+        },
+        "3_star" : {
+          "type" : "string",
+          "example" : "3"
+        },
+        "4_star" : {
+          "type" : "string",
+          "example" : "4"
+        },
+        "5_star" : {
+          "type" : "string",
+          "example" : "5"
+        }
+      }
+    },
+    "phlebotomist_analysis_user_details_reviews_and_ratings" : {
+      "type" : "object",
+      "properties" : {
+        "average_rating" : {
+          "type" : "string",
+          "example" : "4.5"
+        },
+        "count_of_total_reviews" : {
+          "type" : "string",
+          "example" : "10"
+        },
+        "rating" : {
+          "$ref" : "#/definitions/phlebotomist_analysis_user_details_reviews_and_ratings_rating"
+        }
+      }
+    },
+    "phlebotomist_analysis_user_details" : {
+      "type" : "object",
+      "properties" : {
+        "user_id" : {
+          "type" : "string",
+          "example" : "123"
+        },
+        "profile_image" : {
+          "type" : "string",
+          "example" : "https://lh3.googleusercontent.com/ogw/AOLn63GYQ3uohe6sVntykFZgEXNMx93yaO0hx5Ggy9Cryw=s32-c-mo"
+        },
+        "full_name" : {
+          "$ref" : "#/definitions/first_name"
+        },
+        "member_since" : {
+          "type" : "string",
+          "example" : "2"
+        },
+        "last_collection" : {
+          "type" : "string",
+          "example" : "3"
+        },
+        "performance" : {
+          "$ref" : "#/definitions/phlebotomist_analysis_user_details_performance"
+        },
+        "overview" : {
+          "$ref" : "#/definitions/phlebotomist_analysis_user_details_overview"
+        },
+        "reviews_and_ratings" : {
+          "$ref" : "#/definitions/phlebotomist_analysis_user_details_reviews_and_ratings"
+        }
+      }
+    },
+    "profile_details_user_details" : {
+      "type" : "object",
+      "properties" : {
+        "user_id" : {
+          "type" : "string",
+          "example" : "123"
+        },
+        "profile_image" : {
+          "type" : "string",
+          "example" : "https://lh3.googleusercontent.com/ogw/AOLn63GYQ3uohe6sVntykFZgEXNMx93yaO0hx5Ggy9Cryw=s32-c-mo"
+        },
+        "full_name" : {
+          "$ref" : "#/definitions/first_name"
+        },
+        "date_of_birth" : {
+          "type" : "string",
+          "example" : "05/09/98"
+        },
+        "full_phone_number" : {
+          "type" : "string",
+          "example" : "+91 1234567890"
+        },
+        "gender" : {
+          "type" : "string",
+          "example" : "male"
+        },
+        "email" : {
+          "type" : "string",
+          "example" : "shree@gmail.com"
+        },
+        "password" : {
+          "type" : "string",
+          "example" : "password"
+        }
+      }
+    },
+    "submit_patient_details_patient_details" : {
+      "type" : "object",
+      "properties" : {
+        "user_id" : {
+          "type" : "string",
+          "example" : "123"
+        },
+        "full_name" : {
+          "$ref" : "#/definitions/first_name"
+        },
+        "full_phone_number" : {
+          "type" : "string",
+          "example" : "+91 1234567890"
+        },
+        "date_of_birth" : {
+          "type" : "string",
+          "example" : "05/08/1993"
+        },
+        "address" : {
+          "type" : "string",
+          "example" : "Puppalaguda, manikonda Hyderabad-500089"
+        },
+        "lab_address" : {
+          "type" : "string",
+          "example" : "Puppalaguda, manikonda Hyderabad-500089"
+        },
+        "sample" : {
+          "type" : "string",
+          "example" : "blood"
+        },
+        "priority" : {
+          "type" : "string",
+          "example" : "High"
+        },
+        "slot_timing" : {
+          "type" : "string",
+          "example" : "03:30AM to 04:30AM"
+        },
+        "started_at" : {
+          "type" : "string",
+          "example" : "03:30AM"
+        },
+        "collected_at" : {
+          "type" : "string",
+          "example" : "04:35AM"
+        },
+        "lab_submission_at" : {
+          "type" : "string",
+          "example" : "06:30PM"
+        }
+      }
+    },
+    "patient_details_patient_details" : {
+      "type" : "object",
+      "properties" : {
+        "user_id" : {
+          "type" : "string",
+          "example" : "123"
+        },
+        "full_name" : {
+          "$ref" : "#/definitions/first_name"
+        },
+        "full_phone_number" : {
+          "type" : "string",
+          "example" : "+91 1234567890"
+        },
+        "date_of_birth" : {
+          "type" : "string",
+          "example" : "05/08/1993"
+        },
+        "address" : {
+          "type" : "string",
+          "example" : "Puppalaguda, manikonda Hyderabad-500089"
+        },
+        "lab_address" : {
+          "type" : "string",
+          "example" : "Puppalaguda, manikonda Hyderabad-500089"
+        },
+        "sample" : {
+          "type" : "string",
+          "example" : "blood"
+        },
+        "priority" : {
+          "type" : "string",
+          "example" : "High"
+        },
+        "slot_timing" : {
+          "type" : "string",
+          "example" : "03:30AM to 04:30AM"
+        },
+        "started_at" : {
+          "type" : "string",
+          "example" : "03:30AM"
+        },
+        "collected_at" : {
+          "type" : "string",
+          "example" : "04:35AM"
+        },
+        "order_id" : {
+          "type" : "string",
+          "example" : "2"
+        }
+      }
+    },
+    "todays_list_patient_details" : {
+      "type" : "object",
+      "properties" : {
+        "user_id" : {
+          "type" : "string",
+          "example" : "123"
+        },
+        "full_name" : {
+          "$ref" : "#/definitions/first_name"
+        },
+        "address" : {
+          "type" : "string",
+          "example" : "Puppalaguda, manikonda Hyderabad-500089"
+        },
+        "priority" : {
+          "type" : "string",
+          "example" : "High Priority"
+        },
+        "status" : {
+          "type" : "string",
+          "example" : "To Be Picked"
+        },
+        "sample_type" : {
+          "type" : "string",
+          "example" : "Blood Sample"
+        },
+        "time" : {
+          "type" : "string",
+          "example" : "10:30AM"
+        },
+        "order_id" : {
+          "type" : "string",
+          "example" : "2"
+        }
+      }
+    },
+    "todays_list_patient_details1" : {
+      "type" : "object",
+      "properties" : {
+        "user_id" : {
+          "type" : "string",
+          "example" : "123"
+        },
+        "full_name" : {
+          "$ref" : "#/definitions/first_name"
+        },
+        "address" : {
+          "type" : "string",
+          "example" : "Puppalaguda, manikonda Hyderabad-500089"
+        },
+        "priority" : {
+          "type" : "string",
+          "example" : "High Priority"
+        },
+        "status" : {
+          "type" : "string",
+          "example" : "To Be Picked"
+        },
+        "sample_type" : {
+          "type" : "string",
+          "example" : "Blood Sample"
+        },
+        "time" : {
+          "type" : "string",
+          "example" : "10:30AM"
+        },
+        "order_id" : {
+          "type" : "string",
+          "example" : "3"
+        }
+      }
+    },
+    "todays_list_patient_details2" : {
+      "type" : "object",
+      "properties" : {
+        "user_id" : {
+          "type" : "string",
+          "example" : "123"
+        },
+        "full_name" : {
+          "$ref" : "#/definitions/first_name"
+        },
+        "address" : {
+          "type" : "string",
+          "example" : "Puppalaguda, manikonda Hyderabad-500089"
+        },
+        "priority" : {
+          "type" : "string",
+          "example" : "High Priority"
+        },
+        "status" : {
+          "type" : "string",
+          "example" : "To Be Picked"
+        },
+        "sample_type" : {
+          "type" : "string",
+          "example" : "Blood Sample"
+        },
+        "time" : {
+          "type" : "string",
+          "example" : "10:30AM"
+        },
+        "order_id" : {
+          "type" : "string",
+          "example" : "4"
         }
       }
     },
