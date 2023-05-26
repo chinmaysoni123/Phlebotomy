@@ -599,9 +599,54 @@
           }
         }
       }
+    },
+    "/order_reschedule" : {
+      "post" : {
+        "tags" : [ "developers" ],
+        "summary" : "order reshedule",
+        "description" : "By passing session token you can reschedule order\n",
+        "operationId" : "order_reshedule1",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "order_id",
+          "in" : "query",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "date_time",
+          "in" : "query",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "analyst details fetched successfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_16"
+            }
+          }
+        }
+      }
     }
   },
   "definitions" : {
+    "order_reschedule" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "otp(123456) sent to user for rescheduling"
+        }
+      }
+    },
     "unassigned_orders" : {
       "type" : "object",
       "properties" : {
@@ -1109,6 +1154,14 @@
       "properties" : {
         "success" : {
           "$ref" : "#/definitions/phlebotomist_analysis"
+        }
+      }
+    },
+    "inline_response_200_16" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/order_reschedule"
         }
       }
     },
