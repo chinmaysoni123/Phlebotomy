@@ -616,11 +616,47 @@
         }, {
           "name" : "order_id",
           "in" : "query",
-          "description" : "The session token in the format \"Bearer {token}\"",
+          "description" : "The order_id",
           "required" : true,
           "type" : "string"
         }, {
           "name" : "date_time",
+          "in" : "query",
+          "description" : "The date and time",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "otp sent  successfully to reschedule",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_16"
+            }
+          }
+        }
+      }
+    },
+    "/reschedule_verify_otp" : {
+      "post" : {
+        "tags" : [ "developers" ],
+        "summary" : "reschedule verify otp",
+        "description" : "By passing session token you can reschedule verify otp\n",
+        "operationId" : "reschedule verify otp",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "order_id",
+          "in" : "query",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "otp",
           "in" : "query",
           "description" : "The session token in the format \"Bearer {token}\"",
           "required" : true,
@@ -630,7 +666,43 @@
           "200" : {
             "description" : "analyst details fetched successfully",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_16"
+              "$ref" : "#/definitions/inline_response_200_17"
+            }
+          }
+        }
+      }
+    },
+    "/contact_admin" : {
+      "post" : {
+        "tags" : [ "developers" ],
+        "summary" : "contact admin",
+        "description" : "By passing admin contact reason details\n",
+        "operationId" : "contact_admin",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "reason",
+          "in" : "query",
+          "description" : "The reason",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "order_id",
+          "in" : "query",
+          "description" : "order_id",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "analyst details fetched successfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_18"
             }
           }
         }
@@ -644,6 +716,24 @@
         "message" : {
           "type" : "string",
           "example" : "otp(123456) sent to user for rescheduling"
+        }
+      }
+    },
+    "contact_admin" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "admin need to make decision"
+        }
+      }
+    },
+    "reschedule_otp_verify" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "otp verified successfully for rescheduling"
         }
       }
     },
@@ -1162,6 +1252,22 @@
       "properties" : {
         "success" : {
           "$ref" : "#/definitions/order_reschedule"
+        }
+      }
+    },
+    "inline_response_200_17" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/reschedule_otp_verify"
+        }
+      }
+    },
+    "inline_response_200_18" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/contact_admin"
         }
       }
     },
