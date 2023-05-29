@@ -563,6 +563,42 @@
             "schema" : {
               "$ref" : "#/definitions/inline_response_200_14"
             }
+          }
+        }
+      }
+    },
+    "/settings" : {
+      "post" : {
+        "tags" : [ "developers" ],
+        "summary" : "select order type",
+        "description" : "select order type.\n",
+        "operationId" : "settings",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "pick_one_and_deliver",
+          "in" : "query",
+          "description" : "select type",
+          "required" : true,
+          "type" : "boolean"
+        }, {
+          "name" : "pick_all_and_deliver",
+          "in" : "query",
+          "description" : "select type",
+          "required" : true,
+          "type" : "boolean"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "select order type.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_15"
+            }
           },
           "401" : {
             "description" : "Unauthorized.Invalid session token."
@@ -591,7 +627,7 @@
           "200" : {
             "description" : "analyst details fetched successfully",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_15"
+              "$ref" : "#/definitions/inline_response_200_16"
             }
           },
           "400" : {
@@ -630,7 +666,7 @@
           "200" : {
             "description" : "otp sent  successfully to reschedule",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_16"
+              "$ref" : "#/definitions/inline_response_200_17"
             }
           }
         }
@@ -666,7 +702,7 @@
           "200" : {
             "description" : "analyst details fetched successfully",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_17"
+              "$ref" : "#/definitions/inline_response_200_18"
             }
           }
         }
@@ -702,7 +738,7 @@
           "200" : {
             "description" : "analyst details fetched successfully",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_18"
+              "$ref" : "#/definitions/inline_response_200_19"
             }
           }
         }
@@ -710,6 +746,19 @@
     }
   },
   "definitions" : {
+    "settings" : {
+      "type" : "object",
+      "properties" : {
+        "pick_one_deliver" : {
+          "type" : "boolean",
+          "example" : false
+        },
+        "pick_all_and_deliver" : {
+          "type" : "boolean",
+          "example" : false
+        }
+      }
+    },
     "order_reschedule" : {
       "type" : "object",
       "properties" : {
@@ -1242,8 +1291,8 @@
     "inline_response_200_15" : {
       "type" : "object",
       "properties" : {
-        "success" : {
-          "$ref" : "#/definitions/phlebotomist_analysis"
+        "response" : {
+          "$ref" : "#/definitions/settings"
         }
       }
     },
@@ -1251,7 +1300,7 @@
       "type" : "object",
       "properties" : {
         "success" : {
-          "$ref" : "#/definitions/order_reschedule"
+          "$ref" : "#/definitions/phlebotomist_analysis"
         }
       }
     },
@@ -1259,11 +1308,19 @@
       "type" : "object",
       "properties" : {
         "success" : {
-          "$ref" : "#/definitions/reschedule_otp_verify"
+          "$ref" : "#/definitions/order_reschedule"
         }
       }
     },
     "inline_response_200_18" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/reschedule_otp_verify"
+        }
+      }
+    },
+    "inline_response_200_19" : {
       "type" : "object",
       "properties" : {
         "success" : {
