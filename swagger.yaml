@@ -1,0 +1,2487 @@
+swagger: '2.0'
+info:
+  description: This is a simple API
+  version: 1.0.0
+  title: Simple Inventory API
+  # put the contact info for your development or API team
+  contact:
+    email: you@your-company.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: admins
+  description: Secured Admin-only calls
+- name: developers
+  description: Operations available to regular developers
+
+paths:
+  /unassigned_orders:
+    get:
+      tags:
+      - admins
+      summary: admin_unassigned_orders
+      operationId: admin_unassigned_orders
+      description: |
+        By passing  with session token you can acess the unassigned orders
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: you logged in sucessfully
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/definitions/unassigned_orders'
+                    example:
+                    - order_id: "123456"
+                      patient_name: "pavan dasari"
+                      location: "Rathifile, Secunderabad-500003"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-25 20:56:07 +0530"
+                      status: "unassign"
+                    - order_id: "123457"
+                      patient_name: "roop devi"
+                      location: "kajaguda, Hyderabad-500072"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-25 20:56:07 +0530"
+                      status: "unassign"
+                    - order_id: "123458"
+                      patient_name: "sushmita"
+                      location: "golden temple, Hyderabad-500089"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-26 20:56:07 +0530"
+                      status: "unassign"
+                    - order_id: "123459"
+                      patient_name: "pooja"
+                      location: "manikonda bus stop, Hyderabad-500089"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-26 20:56:07 +0530"
+                      status: "unassign"
+                    - order_id: "123470"
+                      patient_name: "ghost"
+                      location: "kphb, Hyderabad-500072"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-27 20:56:07 +0530"
+                      status: "unassign"
+                    - order_id: "123471"
+                      patient_name: "sandeep"
+                      location: "nacharam, Medchal–Malkajgiri-500076"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-27 20:56:07 +0530"
+                      status: "unassign"
+        400:
+          description: bad input parameter
+  /assigned_orders:
+    get:
+      tags:
+      - admins
+      summary: admin_assigned_orders
+      operationId: admin_assigned_orders
+      description: |
+        By passing  with session token you can acess the assigned orders
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: you logged in sucessfully
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/definitions/assigned_orders'
+                    example:
+                    - order_id: "123456"
+                      patient_name: "pavan dasari"
+                      location: "Rathifile, Secunderabad-500003"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-25 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "delivering sample"
+                    - order_id: "123457"
+                      patient_name: "roop devi"
+                      location: "kajaguda, Hyderabad-500072"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-25 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "delivering sample"
+                    - order_id: "123458"
+                      patient_name: "sushmita"
+                      location: "golden temple, Hyderabad-500089"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-26 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "inactive"
+                    - order_id: "123459"
+                      patient_name: "pooja"
+                      location: "manikonda bus stop, Hyderabad-500089"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-26 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "inactive"
+                    - order_id: "123470"
+                      patient_name: "ghost"
+                      location: "kphb, Hyderabad-500072"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-27 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "on the way to pickup"
+                    - order_id: "123471"
+                      patient_name: "sandeep"
+                      location: "nacharam, Medchal–Malkajgiri-500076"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-27 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "collecting sample"
+        400:
+          description: bad input parameter
+  /admin_phlebotomy_list:
+    get:
+      tags:
+      - admins
+      summary: admin_phlebotomy_list
+      operationId: admin_phlebotomy_list
+      description: |
+        By passing  with session token you can acess the admin_phlebotomy_list
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: you fetched admin_phlebotomy_list sucessfully
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/definitions/assigned_orders'
+                    example:
+                    - order_id: "123456"
+                      patient_name: "pavan dasari"
+                      location: "Rathifile, Secunderabad-500003"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-25 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "delivering sample"
+                    - order_id: "123457"
+                      patient_name: "roop devi"
+                      location: "kajaguda, Hyderabad-500072"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-25 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "delivering sample"
+                    - order_id: "123458"
+                      patient_name: "sushmita"
+                      location: "golden temple, Hyderabad-500089"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-26 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "inactive"
+                    - order_id: "123459"
+                      patient_name: "pooja"
+                      location: "manikonda bus stop, Hyderabad-500089"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-26 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "inactive"
+                    - order_id: "123470"
+                      patient_name: "ghost"
+                      location: "kphb, Hyderabad-500072"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-27 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "on the way to pickup"
+                    - order_id: "123471"
+                      patient_name: "sandeep"
+                      location: "nacharam, Medchal–Malkajgiri-500076"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-27 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "collecting sample"
+        400:
+          description: bad input parameter
+  /admin_pending_orders:
+    get:
+      tags:
+      - admins
+      summary: admin_pending_orders
+      operationId: admin_pending_orders
+      description: |
+        By passing  with session token you can acess the admin_pending orders
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: you fetched admin_pending_orders sucessfully
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/definitions/assigned_orders'
+                    example:
+                    - order_id: "123456"
+                      patient_name: "pavan dasari"
+                      location: "Rathifile, Secunderabad-500003"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-25 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "patient_unavailable"
+                    - order_id: "123457"
+                      patient_name: "roop devi"
+                      location: "kajaguda, Hyderabad-500072"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-25 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "patient_unavailable"
+                    - order_id: "123458"
+                      patient_name: "sushmita"
+                      location: "golden temple, Hyderabad-500089"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-26 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "patient_unavailable"
+                    - order_id: "123459"
+                      patient_name: "pooja"
+                      location: "manikonda bus stop, Hyderabad-500089"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-26 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "patient_unavailable"
+                    - order_id: "123470"
+                      patient_name: "ghost"
+                      location: "kphb, Hyderabad-500072"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-27 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "patient_unavailable"
+                    - order_id: "123471"
+                      patient_name: "sandeep"
+                      location: "nacharam, Medchal–Malkajgiri-500076"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-27 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "patient_unavailable"
+        400:
+          description: bad input parameter
+  /admin_delivered_orders:
+    get:
+      tags:
+      - admins
+      summary: delivered_orders
+      operationId: delivered_orders
+      description: |
+        By passing  with session token you can acess the delivered orders
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: you fetched delivered_orders sucessfully
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/definitions/assigned_orders'
+                    example:
+                    - order_id: "123456"
+                      patient_name: "pavan dasari"
+                      location: "Rathifile, Secunderabad-500003"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-25 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "delivered"
+                    - order_id: "123457"
+                      patient_name: "roop devi"
+                      location: "kajaguda, Hyderabad-500072"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-25 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "delivered"
+                    - order_id: "123458"
+                      patient_name: "sushmita"
+                      location: "golden temple, Hyderabad-500089"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-26 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "delivered"
+                    - order_id: "123459"
+                      patient_name: "pooja"
+                      location: "manikonda bus stop, Hyderabad-500089"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-26 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "delivered"
+                    - order_id: "123470"
+                      patient_name: "ghost"
+                      location: "kphb, Hyderabad-500072"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-27 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "delivered"
+                    - order_id: "123471"
+                      patient_name: "sandeep"
+                      location: "nacharam, Medchal–Malkajgiri-500076"
+                      sample_type: "blood"
+                      schedule_date_time: "2023-05-27 20:56:07 +0530"
+                      phlebotomist_name: "Persion"
+                      phlebotomist_phone_number: "+918074325706"
+                      lab_location: "Raidurgam,Hyderabad-500008"
+                      status: "delivered"
+        400:
+          description: bad input parameter
+  /admin_rescheduled_orders:
+    get:
+      tags:
+      - admins
+      summary: admin_assigned_orders
+      operationId: admin_rescheduled_orders
+      description: |
+        By passing  with session token you can acess the assigned orders
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: you fetched admin_rescheduled_orders sucessfully 
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/definitions/admin_rescheduled_orders'
+                    example:
+                    - order_id: "123456"
+                      patient_name: "pavan dasari"
+                      reschedule_date_time: "2023-05-25 20:56:07 +0530"
+                      rescheduled_by: "Patient"
+                      confirmed_by: "Patient"
+                      sample_type: "blood"
+                      status: "to be picked"
+                    - order_id: "123457"
+                      patient_name: "roop devi"
+                      reschedule_date_time: "2023-05-25 20:56:07 +0530"
+                      rescheduled_by: "Patient"
+                      confirmed_by: "Patient"
+                      sample_type: "blood"
+                      status: "to be picked"
+                    - order_id: "123458"
+                      patient_name: "shiv"
+                      reschedule_date_time: "2023-05-25 20:56:07 +0530"
+                      rescheduled_by: "Patient"
+                      confirmed_by: "Patient"
+                      sample_type: "blood"
+                      status: "to be picked"
+                    - order_id: "123459"
+                      patient_name: "sushmita"
+                      reschedule_date_time: "2023-05-25 20:56:07 +0530"
+                      rescheduled_by: "phlebotomist"
+                      confirmed_by: "Patient"
+                      sample_type: "blood"
+                      status: "to be picked"
+                    - order_id: "123458"
+                      patient_name: "shiv"
+                      reschedule_date_time: "2023-05-25 20:56:07 +0530"
+                      rescheduled_by: "Patient"
+                      confirmed_by: "Patient"
+                      sample_type: "blood"
+                      status: "to be picked"
+                    - order_id: "123453"
+                      patient_name: "ghost"
+                      reschedule_date_time: "2023-05-25 20:56:07 +0530"
+                      rescheduled_by: "phlebotomist"
+                      confirmed_by: "Patient"
+                      sample_type: "blood"
+                      status: "to be picked"
+                    - order_id: "123464"
+                      patient_name: "shekar"
+                      reschedule_date_time: "2023-05-25 20:56:07 +0530"
+                      rescheduled_by: "Patient"
+                      confirmed_by: "Patient"
+                      sample_type: "blood"
+                      status: "to be picked"
+                    - order_id: "123465"
+                      patient_name: "sandeep"
+                      reschedule_date_time: "2023-05-25 20:56:07 +0530"
+                      rescheduled_by: "phlebotomist"
+                      confirmed_by: "Patient"
+                      sample_type: "blood"
+                      status: "to be picked"
+        400:
+          description: bad input parameter
+  /dashboard:
+    get:
+      tags:
+      - admins
+      summary: admin_dashboard
+      operationId: admin_dashboard
+      description: |
+        By passing  with session token you can acess the unassigned orders
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: you logged in sucessfully
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  total_orders:
+                    type: integer
+                    example: 1234
+                  assigned_orders:
+                    type: integer
+                    example: 1234
+                  unassigned_orders:
+                    type: integer
+                    example: 1234
+                  phlebotomist:
+                    type: integer
+                    example: 1234
+                  labs:
+                    type: integer
+                    example: 1234
+        400:
+          description: bad input parameter
+                  
+    
+  /login:
+    post:
+      tags:
+      - developers
+      summary: login session
+      operationId: login
+      description: |
+        By passing username and password you can login with session token
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: e_id_or_m_no
+        description: pass an email_id or mobile number
+        required: true
+        type: string
+      - in: query
+        name: password
+        description: enter a valid password
+        type: string
+        required: true
+        minimum: 8
+      # - in: query
+      #   name: login_type
+      #   description: mobile or admin
+      #   type: string
+      #   minimum: 5
+      #   maximum: 7
+      #   required: true
+      responses:
+        200:
+          description: you logged in sucessfully
+          schema:
+            type: object
+            properties:
+              session:
+                $ref: '#/definitions/session'
+        400:
+          description: bad input parameter
+
+  /profile:
+    get:
+      tags:
+      - developers
+      summary: show profile
+      operationId: profile
+      description: |
+        By passing session token you can get the profile details
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      # - in: query
+      #   name: password
+      #   description: enter a valid password
+      #   type: string
+      #   required: true
+      #   minimum: 8
+      # - in: query
+      #   name: login_type
+      #   description: mobile or admin
+      #   type: string
+      #   minimum: 5
+      #   maximum: 7
+      #   required: true
+      responses:
+        200:
+          description: profile details fetched sucessfully
+          schema:
+            type: object
+            properties:
+              success:
+                $ref: '#/definitions/profile_details'
+        400:
+          description: bad input parameter
+          
+  /edit_profile:
+    put:
+      tags:
+      - developers
+      summary: edit profile
+      operationId: profile1
+      description: |
+       Edit the profile details by passing a session token.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: full_name
+        description: Enter full name
+        type: string
+      - in: query
+        name: email
+        description: Enter email
+        type: string
+      - in: query
+        name: date_of_birth
+        description: Enter date of birth
+        type: string
+      - in: query
+        name: full_phone_number
+        description: Enter full phone number
+        type: string
+      responses:
+        200:
+          description: Profile details successfully retrieved.
+          schema:
+            type: object
+            properties:
+              success:
+                $ref: '#/definitions/profile_details'
+              
+        401:
+          description: Unauthorized. Invalid session token.
+        500:
+          description: Internal server error. Failed to retrieve profile details.
+          
+          
+  /patient_details:
+    get:
+      tags:
+      - developers
+      summary: fetch patient details
+      operationId: patient details
+      description: |
+       Fetch patient details by passing session token and patient id.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: p_id
+        description: passing patient id
+        type: string
+      responses:
+        200:
+          description: Patient details successfully retrieved.
+          schema:
+            type: object
+            properties:
+              success:
+                $ref: '#/definitions/patient_details'
+              
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error. Failed to retrieve patient details.        
+  
+  /submit_patient_details:
+    post:
+      tags:
+      - developers
+      summary: submit patient details
+      operationId: submit patient details
+      description: |
+       Fetch patient details by passing session token and patient id.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: order_id
+        description: passing order id 
+        type: string
+      responses:
+        200:
+          description: patient details successfully submitted.
+          schema:
+            type: object
+            properties:
+              success:
+                $ref: '#/definitions/submit_patient_details'
+              
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error. Failed to submit patient details.
+  
+  /collect_samples:
+    post:
+      tags:
+      - developers
+      summary: collect patient samples
+      operationId: collect samples
+      description: |
+       Collect patient samples by passing session token and order id.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: order_id
+        description: passing order id 
+        type: string
+      responses:
+        200:
+          description: OTP sent successfully.
+          schema:
+            type: object
+            properties:
+              success:
+                $ref: '#/definitions/collect_samples'
+              
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error. Failed to send otp.
+  /otp_for_samples:
+    get:
+      tags:
+      - developers
+      summary: otp to verify samples
+      operationId: otp for samples verification
+      description: |
+       Verify otp to samples by passing otp and session token and order id.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: order_id
+        description: passing order id 
+        type: string
+      - in: query
+        name: otp
+        description: enter otp 
+        type: string
+      responses:
+        200:
+          description: OTP verified successfully.
+          schema:
+            type: object
+            properties:
+              success:
+                $ref: '#/definitions/otp_samples'
+              
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error.
+          
+  /todays_list:
+    get:
+      tags:
+      - developers
+      summary: todays list
+      operationId: todays list
+      description: |
+       Todays list of analyst.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: today's list of collection.
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/definitions/todays_list_object'
+                    example:
+                    - user_id: "12"
+                      full_name: "kasa rakesh"
+                      address: "Puppalaguda, manikonda Hyderabad-500089"
+                      priority: "High Priority"
+                      status: "To Be Picked"
+                      sample_type: "Blood Sample"
+                      date_time: "2023-05-26T12:26:45+05:30"
+                      order_id: "1"
+                    
+                    - user_id: "13"
+                      full_name: "Pavan reddy"
+                      address: "Puppalaguda, manikonda Hyderabad-500089"
+                      priority: "High Priority"
+                      status: "To Be Picked"
+                      sample_type: "Blood Sample"
+                      date_time: "2023-05-26T12:26:45+05:30"
+                      order_id: "2"
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error.
+          
+  /rescheduled_list:
+    get:
+      tags:
+      - developers
+      summary: rescheduled list
+      operationId: rescheduled list
+      description: |
+       Rescheduled list of analyst.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: today's list of collection.
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/definitions/todays_list_object'
+                    example:
+                    - user_id: "12"
+                      full_name: "kasa rakesh"
+                      address: "Puppalaguda, manikonda Hyderabad-500089"
+                      priority: "High Priority"
+                      status: "rescheduled"
+                      sample_type: "Blood Sample"
+                      date_time: "2023-05-26T12:26:45+05:30"
+                      order_id: "1"
+                    
+                    - user_id: "13"
+                      full_name: "Pavan reddy"
+                      address: "Puppalaguda, manikonda Hyderabad-500089"
+                      priority: "High Priority"
+                      status: "rescheduled"
+                      sample_type: "Blood Sample"
+                      date_time: "2023-05-26T12:26:45+05:30"
+                      order_id: "2"
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error. Failed to submit patient details.
+          
+  /unverified_list:
+    get:
+      tags:
+      - developers
+      summary: unverified list
+      operationId: unverified list
+      description: |
+       unverified list of analyst.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: today's list of collection.
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/definitions/todays_list_object'
+                    example:
+                    - user_id: "12"
+                      full_name: "kasa rakesh"
+                      address: "Puppalaguda, manikonda Hyderabad-500089"
+                      priority: "High Priority"
+                      status: "unverified"
+                      sample_type: "Blood Sample"
+                      date_time: "2023-05-26T12:26:45+05:30"
+                      order_id: "1"
+                    
+                    - user_id: "13"
+                      full_name: "Pavan reddy"
+                      address: "Puppalaguda, manikonda Hyderabad-500089"
+                      priority: "High Priority"
+                      status: "unverified"
+                      sample_type: "Blood Sample"
+                      date_time: "2023-05-26T12:26:45+05:30"
+                      order_id: "2"
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error.
+          
+  /cancelled_list:
+    get:
+      tags:
+      - developers
+      summary: cancelled list
+      operationId: cancelled list
+      description: |
+       cancelled list of analyst.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: today's list of collection.
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/definitions/todays_list_object'
+                    example:
+                    - user_id: "12"
+                      full_name: "kasa rakesh"
+                      address: "Puppalaguda, manikonda Hyderabad-500089"
+                      priority: "High Priority"
+                      status: "cancelled"
+                      sample_type: "Blood Sample"
+                      date_time: "2023-05-26T12:26:45+05:30"
+                      order_id: "1"
+                    
+                    - user_id: "13"
+                      full_name: "Pavan reddy"
+                      address: "Puppalaguda, manikonda Hyderabad-500089"
+                      priority: "High Priority"
+                      status: "cancelled"
+                      sample_type: "Blood Sample"
+                      date_time: "2023-05-26T12:26:45+05:30"
+                      order_id: "2"
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error.
+          
+  /delivery_pending_list:
+    get:
+      tags:
+      - developers
+      summary: delivery pending list
+      operationId: delivery pending list
+      description: |
+       delivery pending list of analyst.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: today's list of collection.
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/definitions/todays_list_object'
+                    example:
+                    - user_id: "12"
+                      full_name: "kasa rakesh"
+                      address: "Puppalaguda, manikonda Hyderabad-500089"
+                      priority: "High Priority"
+                      status: "delivery pending"
+                      sample_type: "Blood Sample"
+                      date_time: "2023-05-26T12:26:45+05:30"
+                      order_id: "1"
+                    
+                    - user_id: "13"
+                      full_name: "Pavan reddy"
+                      address: "Puppalaguda, manikonda Hyderabad-500089"
+                      priority: "High Priority"
+                      status: "delivery pending"
+                      sample_type: "Blood Sample"
+                      date_time: "2023-05-26T12:26:45+05:30"
+                      order_id: "2"
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error.
+          
+  /delivered_list:
+    get:
+      tags:
+      - developers
+      summary: delivered list
+      operationId: delivered list
+      description: |
+       delivered  list of analyst.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: today's list of collection.
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/definitions/todays_list_object'
+                    example:
+                    - user_id: "12"
+                      full_name: "kasa rakesh"
+                      address: "Puppalaguda, manikonda Hyderabad-500089"
+                      priority: "High Priority"
+                      status: "delivered"
+                      sample_type: "Blood Sample"
+                      date_time: "2023-05-26T12:26:45+05:30"
+                      order_id: "1"
+                    
+                    - user_id: "13"
+                      full_name: "Pavan reddy"
+                      address: "Puppalaguda, manikonda Hyderabad-500089"
+                      priority: "High Priority"
+                      status: "delivered"
+                      sample_type: "Blood Sample"
+                      date_time: "2023-05-26T12:26:45+05:30"
+                      order_id: "2"
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error.
+          
+  /update_status:
+    put:
+      tags:
+      - developers
+      summary: update status list
+      operationId: update status list
+      description: |
+       update the status of order.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: today's list of collection.
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/definitions/todays_list_object'
+                    example:
+                    - user_id: "12"
+                      full_name: "kasa rakesh"
+                      address: "Puppalaguda, manikonda Hyderabad-500089"
+                      priority: "High Priority"
+                      status: "arrived"
+                      sample_type: "Blood Sample"
+                      date_time: "2023-05-26T12:26:45+05:30"
+                      order_id: "1"
+                    
+                    - user_id: "13"
+                      full_name: "Pavan reddy"
+                      address: "Puppalaguda, manikonda Hyderabad-500089"
+                      priority: "High Priority"
+                      status: "arrived"
+                      sample_type: "Blood Sample"
+                      date_time: "2023-05-26T12:26:45+05:30"
+                      order_id: "2"
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error.
+          
+  /select_order_type:
+    post:
+      tags:
+      - developers
+      summary: select order type
+      operationId: select order type
+      description: |
+       select order type.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: pick_high_priority_and_deliver
+        description: select type 
+        type: boolean
+      - in: query
+        name: pick_one_and_deliver
+        description: select type 
+        type: boolean
+      - in: query
+        name: pick_all_and_deliver
+        description: select type
+        type: boolean
+      responses:
+        200:
+          description: select order type.
+          schema:
+            type: object
+            properties:
+              response:
+                  $ref: '#/definitions/select_type'
+  /settings:
+    post:
+      tags:
+      - developers
+      summary: select order type
+      operationId: settings
+      description: |
+       select order type.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      # - in: query
+      #   name: pick_high_priority_and_deliver
+      #   description: select type 
+      #   type: boolean
+      - in: query
+        name: pick_one_and_deliver
+        description: select type 
+        type: boolean
+        required: true
+      - in: query
+        name: pick_all_and_deliver
+        description: select type
+        type: boolean
+        required: true
+      responses:
+        200:
+          description: select order type.
+          schema:
+            type: object
+            properties:
+              response:
+                  $ref: '#/definitions/settings'
+                    
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error.
+          
+  /analyst:
+    get:
+      tags:
+      - developers
+      summary: analyst details
+      operationId: analyst
+      description: |
+        By passing session token you can get the analyst details
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      # - in: query
+      #   name: password
+      #   description: enter a valid password
+      #   type: string
+      #   required: true
+      #   minimum: 8
+      # - in: query
+      #   name: login_type
+      #   description: mobile or admin
+      #   type: string
+      #   minimum: 5
+      #   maximum: 7
+      #   required: true
+      responses:
+        200:
+          description: analyst details fetched successfully
+          schema:
+            type: object
+            properties:
+              success:
+                $ref: '#/definitions/phlebotomist_analysis'
+        400:
+          description: bad input 
+  /order_reschedule:
+    post:
+      tags:
+      - developers
+      summary: order reshedule
+      operationId: order_reshedule1
+      description: |
+        By passing session token you can reschedule order
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: order_id
+        description: The order_id
+        required: true
+        type: string
+      - in: query
+        name: date_time
+        description: The date and time
+        required: true
+        type: string
+      responses:
+        200:
+          description:  otp sent  successfully to reschedule
+          schema:
+            type: object
+            properties:
+              success:
+                $ref: '#/definitions/order_reschedule'
+  /reschedule_verify_otp:
+    post:
+      tags:
+      - developers
+      summary: reschedule verify otp
+      operationId: reschedule verify otp
+      description: |
+        By passing session token you can reschedule verify otp
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: order_id
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: otp
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: analyst details fetched successfully
+          schema:
+            type: object
+            properties:
+              success:
+                $ref: '#/definitions/reschedule_otp_verify'
+  /contact_admin:
+    post:
+      tags:
+      - developers
+      summary: contact admin
+      operationId: contact_admin
+      description: |
+        By passing admin contact reason details
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: reason
+        description: The reason
+        required: true
+        type: string
+      - in: query
+        name: order_id
+        description: order_id
+        required: true
+        type: string
+      responses:
+        200:
+          description: analyst details fetched successfully
+          schema:
+            type: object
+            properties:
+              success:
+                $ref: '#/definitions/contact_admin'
+  /patient_unavailable_reason:
+    get:
+      tags:
+      - developers
+      summary: patient_unavailable_reason
+      operationId: patient_unavailable_reason
+      description: |
+         patient_unavailable_reason
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: order_id
+        description: order_id
+        required: true
+        type: string
+      responses:
+        200:
+          description: patient_unavailable_details fetched successfully
+          schema:
+            type: object
+            properties:
+              success:
+                $ref: '#/definitions/patient_unavailable_details'
+  /phlebotomist_list:
+    get:
+      tags:
+      - admins
+      summary: delivered_orders
+      operationId: phlebotomist_list
+      description: |
+        By passing  with session token you can acess the phlebotomist_list
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      responses:
+        200:
+          description: you fetched phlebotomist_list sucessfully
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/definitions/phlebotomist_list_details'
+                    example:
+                    - id: 1
+                      name: "jaman"
+                      phone_number: "+917997758147"
+                      current_location: "manikonda,hyderabad"
+                      total_orders_this_month: 12
+                      today_assigned_orders: 10
+                      status: "collecting_sample"
+                    - id: 2
+                      name: "fghjk"
+                      phone_number: "+917797758147"
+                      current_location: "manikonda,hyderabad"
+                      total_orders_this_month: 100
+                      today_assigned_orders: 15
+                      status: "delivering_sample"
+                    - id: 3
+                      name: "dfrgbk"
+                      phone_number: "+917990758147"
+                      current_location: "manikonda,hyderabad"
+                      total_orders_this_month: 200
+                      today_assigned_orders: 10
+                      status: "on_way_to_pick"
+                    - id: 4
+                      name: "hhhhhhh"
+                      phone_number: "+917997708147"
+                      current_location: "manikonda,hyderabad"
+                      total_orders_this_month: 15
+                      today_assigned_orders: 10
+                      status: "inactive"
+        400:
+          description: bad input parameter
+  /order_status:
+    get:
+      tags:
+      - developers
+      summary: order_status
+      operationId: order_status
+      description: |
+         order_status
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: order_id
+        description: order_id
+        required: true
+        type: string
+      responses:
+        200:
+          description: order_status fetched successfully
+          schema:
+            type: object
+            properties:
+              success:
+                $ref: '#/definitions/order_status'
+  /share_phlebo_details:
+    post:
+      tags:
+      - admins
+      summary: share_phlebo_details
+      operationId: share_phlebo_details
+      description: |
+         share_phlebo_details
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: order_id
+        description: order_id
+        required: true
+        type: string
+      - in: query
+        name: username
+        description: username
+        required: true
+        type: string
+      - in: query
+        name: temp_password
+        description: temp_password
+        required: true
+        type: string
+      - in: query
+        name: phone_number
+        description: phone_number
+        required: true
+        type: string
+      - in: query
+        name: email
+        description: email
+        required: true
+        type: string
+      responses:
+        200:
+          description:  shared details  successfully
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  message: 
+                    type: string
+                    example: "username and password shared sucessfully"
+  /admin_reschedule_today:
+    put:
+      tags:
+      - admins
+      summary: admin_reschedule_today
+      operationId: admin_reschedule_today
+      description: |
+       update the admin_reschedule_today of order.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: order_id
+        description: The order id is needed to pass update reschedule to today
+        required: true
+        type: string
+      - in: query
+        name: time
+        description: The order id is needed to pass update reschedule to today
+        required: true
+        type: string
+      responses:
+        200:
+          description: admin_reschedule_today.
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: sucessfully moved to today's list
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error.
+  /phlebotomist:
+    post:
+      tags:
+      - admins
+      summary: create_phlebotomist
+      operationId: create_phlebotomist
+      description: |
+       create_phlebotomist.
+      consumes:
+      - multipart/form-data
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: formData
+        name: profile_image
+        description: profile image to create phlebotomist
+        required: true
+        type: file
+      - in: query
+        name: name
+        description: name of phlebotomist
+        required: true
+        type: string
+      - in: query
+        name: address
+        description: address of phlebotomist
+        required: true
+        type: string
+      - in: query
+        name: pincode
+        description: pincode of phlebotomist
+        required: true
+        type: string
+      - in: query
+        name: email
+        description: email of phlebotomist
+        required: true
+        type: string
+      - in: query
+        name: state
+        description: state of phlebotomist
+        required: true
+        type: string
+      - in: query
+        name: phone_number
+        description: phone_number of phlebotomist
+        required: true
+        type: string
+      - in: query
+        name: select_permission
+        description: select_permission of phlebotomist
+        required: true
+        type: string
+        enum: ["default","pick_high_priority_and_deliver","pick_one_and_deliver","pick_all_and_deliver"]
+      responses:
+        201:
+          description: created phlebotomist.
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  phlebotomist:
+                    $ref: '#/definitions/phlebotomist'
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error.
+  /assign_phlebotomist:
+    post:
+      tags:
+      - admins
+      summary: assign_phlebotomist
+      operationId: assign_phlebotomist
+      description: |
+       assign_phlebotomist.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: orrder_id
+        description: orrder_id
+        required: true
+        type: string
+      - in: query
+        name: phlebotomist_id
+        description: id of phlebotomist
+        required: true
+        type: string
+      - in: query
+        name: priority
+        description: priority type
+        required: true
+        type: string
+        enum: ["High","medium","low"]
+      - in: query
+        name: lab_location
+        description: lab_location
+        required: true
+        type: string
+      responses:
+        200:
+          description: created phlebotomist.
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                allOf:
+                - $ref: '#/definitions/assign_phlebotomist'
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error.
+  /search_phlebotomist:
+    get:
+      tags:
+      - admins
+      summary: search_phlebotomist
+      operationId: search_phlebotomist
+      description: |
+       search_phlebotomist.
+      produces:
+      - application/json
+      parameters:
+      - in: header
+        name: Authorization
+        description: The session token in the format "Bearer {token}"
+        required: true
+        type: string
+      - in: query
+        name: search
+        description: search
+        required: true
+        type: string
+      responses:
+        200:
+          description: search phlebotomist.
+          schema:
+            type: object
+            properties:
+              success:
+                type: object
+                properties:
+                  phlebotomist:
+                    type: array
+                    items:
+                      $ref: '#/definitions/search_phlebotomist'
+                    example:
+                    - phlebotomist_id: 1
+                      name: "pavan"
+                      assigned_orders: 20
+                      priority: "high"
+                    - phlebotomist_id: 2
+                      name: "chinmay"
+                      assigned_orders: 30
+                      priority: "high"
+                    - phlebotomist_id: 3
+                      name: "kiran"
+                      assigned_orders: 3
+                      priority: "low"
+                    - phlebotomist_id: 4
+                      name: "pranay"
+                      assigned_orders: 10
+                      priority: "medium"
+                    - phlebotomist_id: 5
+                      name: "sai"
+                      assigned_orders: 50
+                      priority: "high"
+                    - phlebotomist_id: 6
+                      name: "sandy"
+                      assigned_orders: 5
+                      priority: "low"
+        401:
+          description: Unauthorized.Invalid session token.
+        500:
+          description: Internal server error.
+      
+definitions:
+  search_phlebotomist:
+    type: object
+    properties:
+      phlebotomist_id:
+        type: integer
+        example: 3
+      name:
+        type: string
+        example: "pavan"
+      assigned_orders:
+        type: integer
+        example: 20
+      priority:
+        type: string
+        example: "high"
+  settings:
+    type: object
+    properties:
+      pick_one_deliver:
+        type: boolean
+        example: false
+      pick_all_and_deliver:
+        type: boolean
+        example: false
+  order_reschedule:
+    type: object
+    properties:
+      message:
+        type: string
+        example: "otp(123456) sent to user for rescheduling"
+  contact_admin:
+    type: object
+    properties:
+      message:
+        type: string
+        example: "admin need to make decision"
+  reschedule_otp_verify:
+    type: object
+    properties:
+      message:
+        type: string
+        example: "otp verified successfully for rescheduling"
+  unassigned_orders:
+    type: object
+    properties:
+      order_id:
+        type: string
+        example: "99999"
+      patient_name:
+        type: string
+        example: "chinmay123"
+      phone_number:
+        type: string
+        example: "8125400447"
+      location:
+        type: string
+        example: "Puppalaguda, manikonda Hyderabad-500089"
+      sample_type:
+        type: string
+        example: "blood"
+      schedule_date_time:
+        type: string
+        example: "2023-05-25 20:56:07 +0530"
+      status:
+        type: string
+        example: "unassign"
+  assigned_orders:
+    type: object
+    properties:
+      order_id:
+        type: string
+        example: "99999"
+      patient_name:
+        type: string
+        example: "chinmay123"
+      phone_number:
+        type: string
+        example: "8125400447"
+      location:
+        type: string
+        example: "Puppalaguda, manikonda Hyderabad-500089"
+      sample_type:
+        type: string
+        example: "blood"
+      schedule_date_time:
+        type: string
+        example: "2023-05-25 20:56:07 +0530"
+      phlebotomist_name:
+        type: string
+        default: "Persion"
+      phlebotomist_phone_number:
+        type: string
+        default: "+918074325706"
+      lab_location:
+        type: string
+        default: "Raidurgam,Hyderabad-500008"
+      status:
+        type: string
+        example: "delivering sample"
+  admin_rescheduled_orders:
+    type: object
+    properties:
+      order_id:
+        type: string
+        example: "99999"
+      patient_name:
+        type: string
+        example: "chinmay123"
+      rescheduled_by:
+        type: string
+        example: "patient"
+      confirmed_by:
+        type: string
+        example: "patient"
+      sample_type:
+        type: string
+        example: "blood"
+      reschedule_date_time:
+        type: string
+        example: "2023-05-25 20:56:07 +0530"
+      status:
+        type: string
+        example: "To be picked"
+  first_name:
+    type: string
+    example: "Pavan123"
+  phlebotomist_analysis:
+    type: object
+    properties:
+      user_details:
+        type: object
+        properties:
+          user_id:
+            type: string
+            example: "123"
+          profile_image: 
+            type: string
+            example: "https://lh3.googleusercontent.com/ogw/AOLn63GYQ3uohe6sVntykFZgEXNMx93yaO0hx5Ggy9Cryw=s32-c-mo"
+          full_name:
+            type: string
+            $ref: '#/definitions/first_name'
+          member_since:
+            type: string
+            example: "2"
+          last_collection:
+            type: string
+            example: "3"
+          performance:
+            type: object
+            properties:
+              total_assigned_orders:
+                type: string
+                example: "200"
+              delivered:
+                type: string
+                example: "102"
+              cancelled:
+                type: string
+                example: "100"
+              preparing:
+                type: string
+                example: "100"
+              rescheduled:
+                type: string
+                example: "100"
+          overview: 
+            type: object
+            properties:
+              medium:
+                type: string
+                example: "38"
+              high:
+                type: string
+                example: "75"
+              low:
+                type: string
+                example: "55"
+          reviews_and_ratings:
+            type: object
+            properties:
+              average_rating:
+                type: string
+                example: "4.5"
+              count_of_total_reviews:
+                type: string
+                example: "10"
+              rating:
+                type: object
+                properties:
+                  1_star:
+                    type: string
+                    example: "1"
+                  2_star:
+                    type: string
+                    example: "2"
+                  3_star: 
+                    type: string
+                    example: "3"
+                  4_star: 
+                    type: string
+                    example: "4"
+                  5_star:
+                      type: string
+                      example: "5"
+
+  profile_details:
+    type: object
+    properties:
+      user_details:
+        type: object
+        properties:
+          user_id:
+            type: string
+            example: "123"
+          profile_image: 
+            type: string
+            example: "https://lh3.googleusercontent.com/ogw/AOLn63GYQ3uohe6sVntykFZgEXNMx93yaO0hx5Ggy9Cryw=s32-c-mo"
+          full_name:
+            type: string
+            $ref: '#/definitions/first_name'
+          date_of_birth:
+            type: string
+            example: "05/09/98"
+          full_phone_number:
+            type: string
+            example: "+91 1234567890"
+          gender:
+            type: string
+            example: "male"
+          email:
+            type: string
+            example: "shree@gmail.com"
+          password: 
+            type: string
+            example: "password"
+
+  submit_patient_details:
+    type: object
+    properties:
+      patient_details:
+        type: object
+        properties:
+          user_id:
+            type: string
+            example: "123"
+          full_name:
+            type: string
+            $ref: '#/definitions/first_name'
+          full_phone_number:
+            type: string
+            example: "+91 1234567890"
+          date_of_birth:
+            type: string
+            example: "05/08/1993"
+          address:
+            type: string
+            example: "Puppalaguda, manikonda Hyderabad-500089"
+          lab_address:
+            type: string
+            example: "Puppalaguda, manikonda Hyderabad-500089"
+          sample: 
+            type: string
+            example: "blood"
+          priority:
+            type: string
+            example: "High"
+          slot_timing:
+            type: string
+            example: "03:30AM to 04:30AM"
+          started_at:
+            type: string
+            example: "03:30AM"
+          collected_at:
+            type: string
+            example: "04:35AM"
+          lab_submission_at: 
+            type: string
+            example: "06:30PM"
+            
+  patient_details:
+    type: object
+    properties:
+      patient_details:
+        type: object
+        properties:
+          user_id:
+            type: string
+            example: "123"
+          full_name:
+            type: string
+            $ref: '#/definitions/first_name'
+          full_phone_number:
+            type: string
+            example: "+91 1234567890"
+          date_of_birth:
+            type: string
+            example: "05/08/1993"
+          address:
+            type: string
+            example: "Puppalaguda, manikonda Hyderabad-500089"
+          lab_address:
+            type: string
+            example: "Raidurg,Hyderabad-500008"
+          sample: 
+            type: string
+            example: "blood"
+          priority:
+            type: string
+            example: "High"
+          slot_timing:
+            type: string
+            example: "03:30AM to 04:30AM"
+          started_at:
+            type: string
+            example: "03:30AM"
+          collected_at:
+            type: string
+            example: "04:35AM"
+          order_id:
+            type: string
+            example: "2"
+            
+  collect_samples:
+    type: object
+    properties:
+      message:
+        type: string
+        example: "Verify OTP (123456) to collect"
+        
+  select_type:
+    type: object
+    properties:
+      pick_high_priority_and_deliver:
+        type: boolean
+        example: true
+      pick_one_deliver:
+        type: boolean
+        example: false
+      pick_all_and_deliver:
+        type: boolean
+        example: false
+        
+  otp_samples:
+    type: object
+    properties:
+      response:
+        type: string
+        example: "OTP verfied successfully"
+
+  todays_list_object:
+    type: object
+    properties:
+          user_id:
+            type: string
+            example: "123"
+          full_name:
+            type: string
+            $ref: '#/definitions/first_name'
+          address:
+            type: string
+            example: "Puppalaguda, manikonda Hyderabad-500089"
+          priority:
+            type: string
+            example: "High Priority"
+          status:
+            type: string
+            example: "To Be Picked"
+          sample_type:
+            type: string
+            example: "Blood Sample"
+          time:
+            type: string
+            example: "10:30AM"
+          order_id:
+            type: string
+            example: "2"
+      # patient_details1:
+      #   type: object
+      #   properties:
+      #     user_id:
+      #       type: string
+      #       example: "123"
+      #     full_name:
+      #       type: string
+      #       $ref: '#/definitions/first_name'
+      #     address:
+      #       type: string
+      #       example: "Puppalaguda, manikonda Hyderabad-500089"
+      #     priority:
+      #       type: string
+      #       example: "High Priority"
+      #     status:
+      #       type: string
+      #       example: "To Be Picked"
+      #     sample_type:
+      #       type: string
+      #       example: "Blood Sample"
+      #     time:
+      #       type: string
+      #       example: "10:30AM"
+      #     order_id:
+      #       type: string
+      #       example: "3"
+      # patient_details2:
+      #   type: object
+      #   properties:
+      #     user_id:
+      #       type: string
+      #       example: "123"
+      #     full_name:
+      #       type: string
+      #       $ref: '#/definitions/first_name'
+      #     address:
+      #       type: string
+      #       example: "Puppalaguda, manikonda Hyderabad-500089"
+      #     priority:
+      #       type: string
+      #       example: "High Priority"
+      #     status:
+      #       type: string
+      #       example: "To Be Picked"
+      #     sample_type:
+      #       type: string
+      #       example: "Blood Sample"
+      #     time:
+      #       type: string
+      #       example: "10:30AM"
+      #     order_id:
+      #       type: string
+      #       example: "4"
+            
+            
+  session:
+    type: object
+    properties:
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            token:
+              type: string
+              example: "eyJhbGciOiJIUzUxMiJ9.eyJpZCI6NjQ1LCJleHAiOjE3MTYzNzE4MDF9.9Jmn5F8eFnx6tzlcJRSPyy6475t1r9mKbRR27n3f9TuyEZI0ktOPXmWOv8yqRniDcm_oFrLUr7qcnoz14YaLGA"
+            user:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                  example: "123"
+                profile_image: 
+                  type: string
+                  example: "https://lh3.googleusercontent.com/ogw/AOLn63GYQ3uohe6sVntykFZgEXNMx93yaO0hx5Ggy9Cryw=s32-c-mo"
+                first_name:
+                  type: string
+                  $ref: '#/definitions/first_name'
+                location:
+                  type: string
+                  example: "Shaikpet Main Rd, Hyderabad"
+      # login_type:
+      #   type: string
+      #   example: mobile
+    description: it gives session token
+  patient_unavailable_details:
+    type: object
+    properties:
+      order_details:
+        type: object
+        properties:
+          order_id:
+            type: string
+            example: "123456"
+          patient_name:
+            type: string
+            example: "harika"
+          age:
+            type: integer
+            example: 25
+          patient_image: 
+            type: string
+            example: "https://lh3.google.com/u/0/ogw/AOLn63EfbX4VjIYIQpE6N8E8jYIfTM0Cu-4z-g0S81Jm=s32-c-mo"
+          status: 
+            type: string
+            example: "patient_unavailable"
+          phone_number:
+            type: string
+            example: "+917093018490"
+          location:
+            type: string
+            example: "golden temple,manikonda-500089"
+          date_time: 
+            type: string
+            example: "2023-05-25 20:56:07 +0530"
+          sample_type:
+            type: string
+            example: "blood"
+      reason:
+        type: string
+        example: "out of station"
+      assigned_phlebotomist:
+        type: object
+        properties:
+          phlebotomist_name:
+            type: string
+            example: "ghost"
+          phone_number:
+            type: string
+            example: "+917997758146"
+          profile_image:
+            type: string
+            example: "https://lh3.googleusercontent.com/ogw/AOLn63GYQ3uohe6sVntykFZgEXNMx93yaO0hx5Ggy9Cryw=s32-c-mo"
+          rating:
+            type: number
+            example: 4.2
+          reviews:
+            type: integer
+            example: 100
+  order_status:
+    type: object
+    properties:
+      order_status:
+        type: object
+        properties:
+          order_id:
+            type: string
+            example: "123456"
+          appintment_booked:
+            type: object
+            properties:
+              status: 
+                type: boolean
+                example: true
+              date:
+                type: string
+                example: "2023-05-25 20:56:07 +0530"
+          assign_to_phlebotomist:
+            type: object
+            properties:
+              status: 
+                type: boolean
+                example: true
+              date:
+                type: string
+                example: "2023-05-22 20:56:07 +0530"
+          sample_collected:
+            type: object
+            properties:
+              status: 
+                type: boolean
+                example: true 
+              date:
+                type: string
+                example: "2023-05-22 20:56:07 +0530"
+          delivered_to_lab:
+            type: object
+            properties:
+              status: 
+                type: boolean
+                example: true 
+              date:
+                type: string
+                example: "2023-05-23 20:56:07 +0530"
+          authorized:
+            type: object
+            properties:
+              status: 
+                type: boolean
+                example: true 
+              date:
+                type: string
+                example: "2023-05-24 20:56:07 +0530"
+          dispatched:
+            type: object
+            properties:
+              status: 
+                type: boolean
+                example: true 
+              date:
+                type: string
+                example: "2023-05-25 20:56:07 +0530"
+          est_delivery_time:
+            type: object
+            properties:
+              date:
+                type: string
+                example: "2023-05-25 20:56:07 +0530"
+  phlebotomist_list_details:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 123456
+      name: 
+        type: string
+        example: "hari"
+      phone_number:
+        type: string
+        example: "+917997758147"
+      current_location:
+        type: string
+        example: "Raidurgam,Hyderabad-500089"
+      total_orders_this_month:
+        type: integer
+        example: 100
+      today_assigned_orders:
+        type: integer
+        example: 10
+      status:
+        type: string
+        example: "collecting_sample"
+  phlebotomist:
+    type: object
+    properties:
+      id:
+        type: integer
+        example: 123456
+      name: 
+        type: string
+        example: "hari"
+      phone_number:
+        type: string
+        example: "+917997758147"
+      email:
+        type: string
+        example: "example@truequations.com"
+      user_name:
+        type: string
+        example: "hari.phlebo"
+      temp_password:
+        type: string
+        example: "hari.phlebo"
+      profile_image:
+        type: string
+        example: "https://lh3.googleusercontent.com/ogw/AOLn63GYQ3uohe6sVntykFZgEXNMx93yaO0hx5Ggy9Cryw=s32-c-mo"
+      address:
+        type: string
+        example: "h.no: 12,Raidurgam,Hyderabad,Telangana-500089"
+      permission:
+        type: string
+        example: "default"
+  assign_phlebotomist:
+    type: object
+    properties:
+      order_details:
+        type: object
+        properties:
+          order_id:
+            type: string
+            example: "33333"
+          status:
+            type: string
+            example: "to_be_picked"
+          priority:
+            type: string
+            example: "high"
+          lab_location:
+            type: string
+            example: "h.no: 12,Raidurgam,Hyderabad,Telangana-500089"
+        
+          
+  # Phlebotomist analysis:
+  #   type: object
+  #   properties:
+  #     id:
+  #       type: integer
+  #       format: int64
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /chinmaysoni123/test1/1.0.0
+schemes:
+ - https
