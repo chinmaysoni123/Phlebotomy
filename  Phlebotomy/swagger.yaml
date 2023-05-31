@@ -50,6 +50,168 @@
         }
       }
     },
+    "/assigned_orders" : {
+      "get" : {
+        "tags" : [ "admins" ],
+        "summary" : "admin_assigned_orders",
+        "description" : "By passing  with session token you can acess the assigned orders\n",
+        "operationId" : "admin_assigned_orders",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "you logged in sucessfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_1"
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/admin_phlebotomy_list" : {
+      "get" : {
+        "tags" : [ "admins" ],
+        "summary" : "admin_phlebotomy_list",
+        "description" : "By passing  with session token you can acess the admin_phlebotomy_list\n",
+        "operationId" : "admin_phlebotomy_list",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "you fetched admin_phlebotomy_list sucessfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_1"
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/admin_pending_orders" : {
+      "get" : {
+        "tags" : [ "admins" ],
+        "summary" : "admin_pending_orders",
+        "description" : "By passing  with session token you can acess the admin_pending orders\n",
+        "operationId" : "admin_pending_orders",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "you fetched admin_pending_orders sucessfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_2"
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/admin_delivered_orders" : {
+      "get" : {
+        "tags" : [ "admins" ],
+        "summary" : "delivered_orders",
+        "description" : "By passing  with session token you can acess the delivered orders\n",
+        "operationId" : "delivered_orders",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "you fetched delivered_orders sucessfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_3"
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/admin_rescheduled_orders" : {
+      "get" : {
+        "tags" : [ "admins" ],
+        "summary" : "admin_assigned_orders",
+        "description" : "By passing  with session token you can acess the assigned orders\n",
+        "operationId" : "admin_rescheduled_orders",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "you fetched admin_rescheduled_orders sucessfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_4"
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/dashboard" : {
+      "get" : {
+        "tags" : [ "admins" ],
+        "summary" : "admin_dashboard",
+        "description" : "By passing  with session token you can acess the unassigned orders\n",
+        "operationId" : "admin_dashboard",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "you logged in sucessfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_5"
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
     "/login" : {
       "post" : {
         "tags" : [ "developers" ],
@@ -75,7 +237,7 @@
           "200" : {
             "description" : "you logged in sucessfully",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_1"
+              "$ref" : "#/definitions/inline_response_200_6"
             }
           },
           "400" : {
@@ -102,7 +264,7 @@
           "200" : {
             "description" : "profile details fetched sucessfully",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_2"
+              "$ref" : "#/definitions/inline_response_200_7"
             }
           },
           "400" : {
@@ -153,7 +315,7 @@
           "200" : {
             "description" : "Profile details successfully retrieved.",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_2"
+              "$ref" : "#/definitions/inline_response_200_7"
             }
           },
           "401" : {
@@ -189,7 +351,7 @@
           "200" : {
             "description" : "Patient details successfully retrieved.",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_3"
+              "$ref" : "#/definitions/inline_response_200_8"
             }
           },
           "401" : {
@@ -225,7 +387,7 @@
           "200" : {
             "description" : "patient details successfully submitted.",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_4"
+              "$ref" : "#/definitions/inline_response_200_9"
             }
           },
           "401" : {
@@ -261,7 +423,7 @@
           "200" : {
             "description" : "OTP sent successfully.",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_5"
+              "$ref" : "#/definitions/inline_response_200_10"
             }
           },
           "401" : {
@@ -303,7 +465,7 @@
           "200" : {
             "description" : "OTP verified successfully.",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_6"
+              "$ref" : "#/definitions/inline_response_200_11"
             }
           },
           "401" : {
@@ -333,7 +495,7 @@
           "200" : {
             "description" : "today's list of collection.",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_7"
+              "$ref" : "#/definitions/inline_response_200_12"
             }
           },
           "401" : {
@@ -363,7 +525,7 @@
           "200" : {
             "description" : "today's list of collection.",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_8"
+              "$ref" : "#/definitions/inline_response_200_13"
             }
           },
           "401" : {
@@ -393,7 +555,7 @@
           "200" : {
             "description" : "today's list of collection.",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_9"
+              "$ref" : "#/definitions/inline_response_200_14"
             }
           },
           "401" : {
@@ -423,7 +585,7 @@
           "200" : {
             "description" : "today's list of collection.",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_10"
+              "$ref" : "#/definitions/inline_response_200_15"
             }
           },
           "401" : {
@@ -453,7 +615,7 @@
           "200" : {
             "description" : "today's list of collection.",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_11"
+              "$ref" : "#/definitions/inline_response_200_16"
             }
           },
           "401" : {
@@ -483,7 +645,7 @@
           "200" : {
             "description" : "today's list of collection.",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_12"
+              "$ref" : "#/definitions/inline_response_200_17"
             }
           },
           "401" : {
@@ -513,7 +675,7 @@
           "200" : {
             "description" : "today's list of collection.",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_13"
+              "$ref" : "#/definitions/inline_response_200_18"
             }
           },
           "401" : {
@@ -561,7 +723,7 @@
           "200" : {
             "description" : "select order type.",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_14"
+              "$ref" : "#/definitions/inline_response_200_19"
             }
           }
         }
@@ -597,7 +759,7 @@
           "200" : {
             "description" : "select order type.",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_15"
+              "$ref" : "#/definitions/inline_response_200_20"
             }
           },
           "401" : {
@@ -627,7 +789,7 @@
           "200" : {
             "description" : "analyst details fetched successfully",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_16"
+              "$ref" : "#/definitions/inline_response_200_21"
             }
           },
           "400" : {
@@ -666,7 +828,7 @@
           "200" : {
             "description" : "otp sent  successfully to reschedule",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_17"
+              "$ref" : "#/definitions/inline_response_200_22"
             }
           }
         }
@@ -702,7 +864,7 @@
           "200" : {
             "description" : "analyst details fetched successfully",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_18"
+              "$ref" : "#/definitions/inline_response_200_23"
             }
           }
         }
@@ -738,14 +900,388 @@
           "200" : {
             "description" : "analyst details fetched successfully",
             "schema" : {
-              "$ref" : "#/definitions/inline_response_200_19"
+              "$ref" : "#/definitions/inline_response_200_24"
             }
+          }
+        }
+      }
+    },
+    "/patient_unavailable_reason" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "patient_unavailable_reason",
+        "description" : "patient_unavailable_reason\n",
+        "operationId" : "patient_unavailable_reason",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "order_id",
+          "in" : "query",
+          "description" : "order_id",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "patient_unavailable_details fetched successfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_25"
+            }
+          }
+        }
+      }
+    },
+    "/phlebotomist_list" : {
+      "get" : {
+        "tags" : [ "admins" ],
+        "summary" : "delivered_orders",
+        "description" : "By passing  with session token you can acess the phlebotomist_list\n",
+        "operationId" : "phlebotomist_list",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "you fetched phlebotomist_list sucessfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_26"
+            }
+          },
+          "400" : {
+            "description" : "bad input parameter"
+          }
+        }
+      }
+    },
+    "/order_status" : {
+      "get" : {
+        "tags" : [ "developers" ],
+        "summary" : "order_status",
+        "description" : "order_status\n",
+        "operationId" : "order_status",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "order_id",
+          "in" : "query",
+          "description" : "order_id",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "order_status fetched successfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_27"
+            }
+          }
+        }
+      }
+    },
+    "/share_phlebo_details" : {
+      "post" : {
+        "tags" : [ "admins" ],
+        "summary" : "share_phlebo_details",
+        "description" : "share_phlebo_details\n",
+        "operationId" : "share_phlebo_details",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "order_id",
+          "in" : "query",
+          "description" : "order_id",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "username",
+          "in" : "query",
+          "description" : "username",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "temp_password",
+          "in" : "query",
+          "description" : "temp_password",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "phone_number",
+          "in" : "query",
+          "description" : "phone_number",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "email",
+          "in" : "query",
+          "description" : "email",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "shared details  successfully",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_28"
+            }
+          }
+        }
+      }
+    },
+    "/admin_reschedule_today" : {
+      "put" : {
+        "tags" : [ "admins" ],
+        "summary" : "admin_reschedule_today",
+        "description" : "update the admin_reschedule_today of order.\n",
+        "operationId" : "admin_reschedule_today",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "order_id",
+          "in" : "query",
+          "description" : "The order id is needed to pass update reschedule to today",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "time",
+          "in" : "query",
+          "description" : "The order id is needed to pass update reschedule to today",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "admin_reschedule_today.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_29"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/phlebotomist" : {
+      "post" : {
+        "tags" : [ "admins" ],
+        "summary" : "create_phlebotomist",
+        "description" : "create_phlebotomist.\n",
+        "operationId" : "create_phlebotomist",
+        "consumes" : [ "multipart/form-data" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "profile_image",
+          "in" : "formData",
+          "description" : "profile image to create phlebotomist",
+          "required" : true,
+          "type" : "file"
+        }, {
+          "name" : "name",
+          "in" : "query",
+          "description" : "name of phlebotomist",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "address",
+          "in" : "query",
+          "description" : "address of phlebotomist",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "pincode",
+          "in" : "query",
+          "description" : "pincode of phlebotomist",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "email",
+          "in" : "query",
+          "description" : "email of phlebotomist",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "state",
+          "in" : "query",
+          "description" : "state of phlebotomist",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "phone_number",
+          "in" : "query",
+          "description" : "phone_number of phlebotomist",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "select_permission",
+          "in" : "query",
+          "description" : "select_permission of phlebotomist",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "default", "pick_high_priority_and_deliver", "pick_one_and_deliver", "pick_all_and_deliver" ]
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "created phlebotomist.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_201"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/assign_phlebotomist" : {
+      "post" : {
+        "tags" : [ "admins" ],
+        "summary" : "assign_phlebotomist",
+        "description" : "assign_phlebotomist.\n",
+        "operationId" : "assign_phlebotomist",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "orrder_id",
+          "in" : "query",
+          "description" : "orrder_id",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "phlebotomist_id",
+          "in" : "query",
+          "description" : "id of phlebotomist",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "priority",
+          "in" : "query",
+          "description" : "priority type",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "High", "medium", "low" ]
+        }, {
+          "name" : "lab_location",
+          "in" : "query",
+          "description" : "lab_location",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "created phlebotomist.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_30"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error."
+          }
+        }
+      }
+    },
+    "/search_phlebotomist" : {
+      "get" : {
+        "tags" : [ "admins" ],
+        "summary" : "search_phlebotomist",
+        "description" : "search_phlebotomist.\n",
+        "operationId" : "search_phlebotomist",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "Authorization",
+          "in" : "header",
+          "description" : "The session token in the format \"Bearer {token}\"",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "search",
+          "in" : "query",
+          "description" : "search",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "search phlebotomist.",
+            "schema" : {
+              "$ref" : "#/definitions/inline_response_200_31"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized.Invalid session token."
+          },
+          "500" : {
+            "description" : "Internal server error."
           }
         }
       }
     }
   },
   "definitions" : {
+    "search_phlebotomist" : {
+      "type" : "object",
+      "properties" : {
+        "phlebotomist_id" : {
+          "type" : "integer",
+          "example" : 3
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "pavan"
+        },
+        "assigned_orders" : {
+          "type" : "integer",
+          "example" : 20
+        },
+        "priority" : {
+          "type" : "string",
+          "example" : "high"
+        }
+      }
+    },
     "settings" : {
       "type" : "object",
       "properties" : {
@@ -816,6 +1352,84 @@
         "status" : {
           "type" : "string",
           "example" : "unassign"
+        }
+      }
+    },
+    "assigned_orders" : {
+      "type" : "object",
+      "properties" : {
+        "order_id" : {
+          "type" : "string",
+          "example" : "99999"
+        },
+        "patient_name" : {
+          "type" : "string",
+          "example" : "chinmay123"
+        },
+        "phone_number" : {
+          "type" : "string",
+          "example" : "8125400447"
+        },
+        "location" : {
+          "type" : "string",
+          "example" : "Puppalaguda, manikonda Hyderabad-500089"
+        },
+        "sample_type" : {
+          "type" : "string",
+          "example" : "blood"
+        },
+        "schedule_date_time" : {
+          "type" : "string",
+          "example" : "2023-05-25 20:56:07 +0530"
+        },
+        "phlebotomist_name" : {
+          "type" : "string",
+          "default" : "Persion"
+        },
+        "phlebotomist_phone_number" : {
+          "type" : "string",
+          "default" : "+918074325706"
+        },
+        "lab_location" : {
+          "type" : "string",
+          "default" : "Raidurgam,Hyderabad-500008"
+        },
+        "status" : {
+          "type" : "string",
+          "example" : "delivering sample"
+        }
+      }
+    },
+    "admin_rescheduled_orders" : {
+      "type" : "object",
+      "properties" : {
+        "order_id" : {
+          "type" : "string",
+          "example" : "99999"
+        },
+        "patient_name" : {
+          "type" : "string",
+          "example" : "chinmay123"
+        },
+        "rescheduled_by" : {
+          "type" : "string",
+          "example" : "patient"
+        },
+        "confirmed_by" : {
+          "type" : "string",
+          "example" : "patient"
+        },
+        "sample_type" : {
+          "type" : "string",
+          "example" : "blood"
+        },
+        "reschedule_date_time" : {
+          "type" : "string",
+          "example" : "2023-05-25 20:56:07 +0530"
+        },
+        "status" : {
+          "type" : "string",
+          "example" : "To be picked"
         }
       }
     },
@@ -938,12 +1552,108 @@
       },
       "description" : "it gives session token"
     },
-    "Phlebotomist analysis" : {
+    "patient_unavailable_details" : {
+      "type" : "object",
+      "properties" : {
+        "order_details" : {
+          "$ref" : "#/definitions/patient_unavailable_details_order_details"
+        },
+        "reason" : {
+          "type" : "string",
+          "example" : "out of station"
+        },
+        "assigned_phlebotomist" : {
+          "$ref" : "#/definitions/patient_unavailable_details_assigned_phlebotomist"
+        }
+      }
+    },
+    "order_status" : {
+      "type" : "object",
+      "properties" : {
+        "order_status" : {
+          "$ref" : "#/definitions/order_status_order_status"
+        }
+      }
+    },
+    "phlebotomist_list_details" : {
       "type" : "object",
       "properties" : {
         "id" : {
           "type" : "integer",
-          "format" : "int64"
+          "example" : 123456
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "hari"
+        },
+        "phone_number" : {
+          "type" : "string",
+          "example" : "+917997758147"
+        },
+        "current_location" : {
+          "type" : "string",
+          "example" : "Raidurgam,Hyderabad-500089"
+        },
+        "total_orders_this_month" : {
+          "type" : "integer",
+          "example" : 100
+        },
+        "today_assigned_orders" : {
+          "type" : "integer",
+          "example" : 10
+        },
+        "status" : {
+          "type" : "string",
+          "example" : "collecting_sample"
+        }
+      }
+    },
+    "phlebotomist" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "example" : 123456
+        },
+        "name" : {
+          "type" : "string",
+          "example" : "hari"
+        },
+        "phone_number" : {
+          "type" : "string",
+          "example" : "+917997758147"
+        },
+        "email" : {
+          "type" : "string",
+          "example" : "example@truequations.com"
+        },
+        "user_name" : {
+          "type" : "string",
+          "example" : "hari.phlebo"
+        },
+        "temp_password" : {
+          "type" : "string",
+          "example" : "hari.phlebo"
+        },
+        "profile_image" : {
+          "type" : "string",
+          "example" : "https://lh3.googleusercontent.com/ogw/AOLn63GYQ3uohe6sVntykFZgEXNMx93yaO0hx5Ggy9Cryw=s32-c-mo"
+        },
+        "address" : {
+          "type" : "string",
+          "example" : "h.no: 12,Raidurgam,Hyderabad,Telangana-500089"
+        },
+        "permission" : {
+          "type" : "string",
+          "example" : "default"
+        }
+      }
+    },
+    "assign_phlebotomist" : {
+      "type" : "object",
+      "properties" : {
+        "order_details" : {
+          "$ref" : "#/definitions/assign_phlebotomist_order_details"
         }
       }
     },
@@ -952,6 +1662,49 @@
       "properties" : {
         "data" : {
           "type" : "array",
+          "example" : [ {
+            "order_id" : "123456",
+            "patient_name" : "pavan dasari",
+            "location" : "Rathifile, Secunderabad-500003",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "status" : "unassign"
+          }, {
+            "order_id" : "123457",
+            "patient_name" : "roop devi",
+            "location" : "kajaguda, Hyderabad-500072",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "status" : "unassign"
+          }, {
+            "order_id" : "123458",
+            "patient_name" : "sushmita",
+            "location" : "golden temple, Hyderabad-500089",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-26 20:56:07 +0530",
+            "status" : "unassign"
+          }, {
+            "order_id" : "123459",
+            "patient_name" : "pooja",
+            "location" : "manikonda bus stop, Hyderabad-500089",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-26 20:56:07 +0530",
+            "status" : "unassign"
+          }, {
+            "order_id" : "123470",
+            "patient_name" : "ghost",
+            "location" : "kphb, Hyderabad-500072",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-27 20:56:07 +0530",
+            "status" : "unassign"
+          }, {
+            "order_id" : "123471",
+            "patient_name" : "sandeep",
+            "location" : "nacharam, Medchal–Malkajgiri-500076",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-27 20:56:07 +0530",
+            "status" : "unassign"
+          } ],
           "items" : {
             "$ref" : "#/definitions/unassigned_orders"
           }
@@ -966,11 +1719,155 @@
         }
       }
     },
+    "inline_response_200_1_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "order_id" : "123456",
+            "patient_name" : "pavan dasari",
+            "location" : "Rathifile, Secunderabad-500003",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "delivering sample"
+          }, {
+            "order_id" : "123457",
+            "patient_name" : "roop devi",
+            "location" : "kajaguda, Hyderabad-500072",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "delivering sample"
+          }, {
+            "order_id" : "123458",
+            "patient_name" : "sushmita",
+            "location" : "golden temple, Hyderabad-500089",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-26 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "inactive"
+          }, {
+            "order_id" : "123459",
+            "patient_name" : "pooja",
+            "location" : "manikonda bus stop, Hyderabad-500089",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-26 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "inactive"
+          }, {
+            "order_id" : "123470",
+            "patient_name" : "ghost",
+            "location" : "kphb, Hyderabad-500072",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-27 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "on the way to pickup"
+          }, {
+            "order_id" : "123471",
+            "patient_name" : "sandeep",
+            "location" : "nacharam, Medchal–Malkajgiri-500076",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-27 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "collecting sample"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/assigned_orders"
+          }
+        }
+      }
+    },
     "inline_response_200_1" : {
       "type" : "object",
       "properties" : {
-        "session" : {
-          "$ref" : "#/definitions/session"
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_1_success"
+        }
+      }
+    },
+    "inline_response_200_2_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "order_id" : "123456",
+            "patient_name" : "pavan dasari",
+            "location" : "Rathifile, Secunderabad-500003",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "patient_unavailable"
+          }, {
+            "order_id" : "123457",
+            "patient_name" : "roop devi",
+            "location" : "kajaguda, Hyderabad-500072",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "patient_unavailable"
+          }, {
+            "order_id" : "123458",
+            "patient_name" : "sushmita",
+            "location" : "golden temple, Hyderabad-500089",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-26 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "patient_unavailable"
+          }, {
+            "order_id" : "123459",
+            "patient_name" : "pooja",
+            "location" : "manikonda bus stop, Hyderabad-500089",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-26 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "patient_unavailable"
+          }, {
+            "order_id" : "123470",
+            "patient_name" : "ghost",
+            "location" : "kphb, Hyderabad-500072",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-27 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "patient_unavailable"
+          }, {
+            "order_id" : "123471",
+            "patient_name" : "sandeep",
+            "location" : "nacharam, Medchal–Malkajgiri-500076",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-27 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "patient_unavailable"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/assigned_orders"
+          }
         }
       }
     },
@@ -978,7 +1875,79 @@
       "type" : "object",
       "properties" : {
         "success" : {
-          "$ref" : "#/definitions/profile_details"
+          "$ref" : "#/definitions/inline_response_200_2_success"
+        }
+      }
+    },
+    "inline_response_200_3_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "order_id" : "123456",
+            "patient_name" : "pavan dasari",
+            "location" : "Rathifile, Secunderabad-500003",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "delivered"
+          }, {
+            "order_id" : "123457",
+            "patient_name" : "roop devi",
+            "location" : "kajaguda, Hyderabad-500072",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "delivered"
+          }, {
+            "order_id" : "123458",
+            "patient_name" : "sushmita",
+            "location" : "golden temple, Hyderabad-500089",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-26 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "delivered"
+          }, {
+            "order_id" : "123459",
+            "patient_name" : "pooja",
+            "location" : "manikonda bus stop, Hyderabad-500089",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-26 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "delivered"
+          }, {
+            "order_id" : "123470",
+            "patient_name" : "ghost",
+            "location" : "kphb, Hyderabad-500072",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-27 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "delivered"
+          }, {
+            "order_id" : "123471",
+            "patient_name" : "sandeep",
+            "location" : "nacharam, Medchal–Malkajgiri-500076",
+            "sample_type" : "blood",
+            "schedule_date_time" : "2023-05-27 20:56:07 +0530",
+            "phlebotomist_name" : "Persion",
+            "phlebotomist_phone_number" : "+918074325706",
+            "lab_location" : "Raidurgam,Hyderabad-500008",
+            "status" : "delivered"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/assigned_orders"
+          }
         }
       }
     },
@@ -986,7 +1955,83 @@
       "type" : "object",
       "properties" : {
         "success" : {
-          "$ref" : "#/definitions/patient_details"
+          "$ref" : "#/definitions/inline_response_200_3_success"
+        }
+      }
+    },
+    "inline_response_200_4_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "order_id" : "123456",
+            "patient_name" : "pavan dasari",
+            "reschedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "rescheduled_by" : "Patient",
+            "confirmed_by" : "Patient",
+            "sample_type" : "blood",
+            "status" : "to be picked"
+          }, {
+            "order_id" : "123457",
+            "patient_name" : "roop devi",
+            "reschedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "rescheduled_by" : "Patient",
+            "confirmed_by" : "Patient",
+            "sample_type" : "blood",
+            "status" : "to be picked"
+          }, {
+            "order_id" : "123458",
+            "patient_name" : "shiv",
+            "reschedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "rescheduled_by" : "Patient",
+            "confirmed_by" : "Patient",
+            "sample_type" : "blood",
+            "status" : "to be picked"
+          }, {
+            "order_id" : "123459",
+            "patient_name" : "sushmita",
+            "reschedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "rescheduled_by" : "phlebotomist",
+            "confirmed_by" : "Patient",
+            "sample_type" : "blood",
+            "status" : "to be picked"
+          }, {
+            "order_id" : "123458",
+            "patient_name" : "shiv",
+            "reschedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "rescheduled_by" : "Patient",
+            "confirmed_by" : "Patient",
+            "sample_type" : "blood",
+            "status" : "to be picked"
+          }, {
+            "order_id" : "123453",
+            "patient_name" : "ghost",
+            "reschedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "rescheduled_by" : "phlebotomist",
+            "confirmed_by" : "Patient",
+            "sample_type" : "blood",
+            "status" : "to be picked"
+          }, {
+            "order_id" : "123464",
+            "patient_name" : "shekar",
+            "reschedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "rescheduled_by" : "Patient",
+            "confirmed_by" : "Patient",
+            "sample_type" : "blood",
+            "status" : "to be picked"
+          }, {
+            "order_id" : "123465",
+            "patient_name" : "sandeep",
+            "reschedule_date_time" : "2023-05-25 20:56:07 +0530",
+            "rescheduled_by" : "phlebotomist",
+            "confirmed_by" : "Patient",
+            "sample_type" : "blood",
+            "status" : "to be picked"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/admin_rescheduled_orders"
+          }
         }
       }
     },
@@ -994,7 +2039,32 @@
       "type" : "object",
       "properties" : {
         "success" : {
-          "$ref" : "#/definitions/submit_patient_details"
+          "$ref" : "#/definitions/inline_response_200_4_success"
+        }
+      }
+    },
+    "inline_response_200_5_success" : {
+      "type" : "object",
+      "properties" : {
+        "total_orders" : {
+          "type" : "integer",
+          "example" : 1234
+        },
+        "assigned_orders" : {
+          "type" : "integer",
+          "example" : 1234
+        },
+        "unassigned_orders" : {
+          "type" : "integer",
+          "example" : 1234
+        },
+        "phlebotomist" : {
+          "type" : "integer",
+          "example" : 1234
+        },
+        "labs" : {
+          "type" : "integer",
+          "example" : 1234
         }
       }
     },
@@ -1002,45 +2072,15 @@
       "type" : "object",
       "properties" : {
         "success" : {
-          "$ref" : "#/definitions/collect_samples"
+          "$ref" : "#/definitions/inline_response_200_5_success"
         }
       }
     },
     "inline_response_200_6" : {
       "type" : "object",
       "properties" : {
-        "success" : {
-          "$ref" : "#/definitions/otp_samples"
-        }
-      }
-    },
-    "inline_response_200_7_success" : {
-      "type" : "object",
-      "properties" : {
-        "data" : {
-          "type" : "array",
-          "example" : [ {
-            "user_id" : "12",
-            "full_name" : "kasa rakesh",
-            "address" : "Puppalaguda, manikonda Hyderabad-500089",
-            "priority" : "High Priority",
-            "status" : "To Be Picked",
-            "sample_type" : "Blood Sample",
-            "date_time" : "2023-05-26T12:26:45+05:30",
-            "order_id" : "1"
-          }, {
-            "user_id" : "13",
-            "full_name" : "Pavan reddy",
-            "address" : "Puppalaguda, manikonda Hyderabad-500089",
-            "priority" : "High Priority",
-            "status" : "To Be Picked",
-            "sample_type" : "Blood Sample",
-            "date_time" : "2023-05-26T12:26:45+05:30",
-            "order_id" : "2"
-          } ],
-          "items" : {
-            "$ref" : "#/definitions/todays_list_object"
-          }
+        "session" : {
+          "$ref" : "#/definitions/session"
         }
       }
     },
@@ -1048,37 +2088,7 @@
       "type" : "object",
       "properties" : {
         "success" : {
-          "$ref" : "#/definitions/inline_response_200_7_success"
-        }
-      }
-    },
-    "inline_response_200_8_success" : {
-      "type" : "object",
-      "properties" : {
-        "data" : {
-          "type" : "array",
-          "example" : [ {
-            "user_id" : "12",
-            "full_name" : "kasa rakesh",
-            "address" : "Puppalaguda, manikonda Hyderabad-500089",
-            "priority" : "High Priority",
-            "status" : "rescheduled",
-            "sample_type" : "Blood Sample",
-            "date_time" : "2023-05-26T12:26:45+05:30",
-            "order_id" : "1"
-          }, {
-            "user_id" : "13",
-            "full_name" : "Pavan reddy",
-            "address" : "Puppalaguda, manikonda Hyderabad-500089",
-            "priority" : "High Priority",
-            "status" : "rescheduled",
-            "sample_type" : "Blood Sample",
-            "date_time" : "2023-05-26T12:26:45+05:30",
-            "order_id" : "2"
-          } ],
-          "items" : {
-            "$ref" : "#/definitions/todays_list_object"
-          }
+          "$ref" : "#/definitions/profile_details"
         }
       }
     },
@@ -1086,37 +2096,7 @@
       "type" : "object",
       "properties" : {
         "success" : {
-          "$ref" : "#/definitions/inline_response_200_8_success"
-        }
-      }
-    },
-    "inline_response_200_9_success" : {
-      "type" : "object",
-      "properties" : {
-        "data" : {
-          "type" : "array",
-          "example" : [ {
-            "user_id" : "12",
-            "full_name" : "kasa rakesh",
-            "address" : "Puppalaguda, manikonda Hyderabad-500089",
-            "priority" : "High Priority",
-            "status" : "unverified",
-            "sample_type" : "Blood Sample",
-            "date_time" : "2023-05-26T12:26:45+05:30",
-            "order_id" : "1"
-          }, {
-            "user_id" : "13",
-            "full_name" : "Pavan reddy",
-            "address" : "Puppalaguda, manikonda Hyderabad-500089",
-            "priority" : "High Priority",
-            "status" : "unverified",
-            "sample_type" : "Blood Sample",
-            "date_time" : "2023-05-26T12:26:45+05:30",
-            "order_id" : "2"
-          } ],
-          "items" : {
-            "$ref" : "#/definitions/todays_list_object"
-          }
+          "$ref" : "#/definitions/patient_details"
         }
       }
     },
@@ -1124,37 +2104,7 @@
       "type" : "object",
       "properties" : {
         "success" : {
-          "$ref" : "#/definitions/inline_response_200_9_success"
-        }
-      }
-    },
-    "inline_response_200_10_success" : {
-      "type" : "object",
-      "properties" : {
-        "data" : {
-          "type" : "array",
-          "example" : [ {
-            "user_id" : "12",
-            "full_name" : "kasa rakesh",
-            "address" : "Puppalaguda, manikonda Hyderabad-500089",
-            "priority" : "High Priority",
-            "status" : "cancelled",
-            "sample_type" : "Blood Sample",
-            "date_time" : "2023-05-26T12:26:45+05:30",
-            "order_id" : "1"
-          }, {
-            "user_id" : "13",
-            "full_name" : "Pavan reddy",
-            "address" : "Puppalaguda, manikonda Hyderabad-500089",
-            "priority" : "High Priority",
-            "status" : "cancelled",
-            "sample_type" : "Blood Sample",
-            "date_time" : "2023-05-26T12:26:45+05:30",
-            "order_id" : "2"
-          } ],
-          "items" : {
-            "$ref" : "#/definitions/todays_list_object"
-          }
+          "$ref" : "#/definitions/submit_patient_details"
         }
       }
     },
@@ -1162,37 +2112,7 @@
       "type" : "object",
       "properties" : {
         "success" : {
-          "$ref" : "#/definitions/inline_response_200_10_success"
-        }
-      }
-    },
-    "inline_response_200_11_success" : {
-      "type" : "object",
-      "properties" : {
-        "data" : {
-          "type" : "array",
-          "example" : [ {
-            "user_id" : "12",
-            "full_name" : "kasa rakesh",
-            "address" : "Puppalaguda, manikonda Hyderabad-500089",
-            "priority" : "High Priority",
-            "status" : "delivery pending",
-            "sample_type" : "Blood Sample",
-            "date_time" : "2023-05-26T12:26:45+05:30",
-            "order_id" : "1"
-          }, {
-            "user_id" : "13",
-            "full_name" : "Pavan reddy",
-            "address" : "Puppalaguda, manikonda Hyderabad-500089",
-            "priority" : "High Priority",
-            "status" : "delivery pending",
-            "sample_type" : "Blood Sample",
-            "date_time" : "2023-05-26T12:26:45+05:30",
-            "order_id" : "2"
-          } ],
-          "items" : {
-            "$ref" : "#/definitions/todays_list_object"
-          }
+          "$ref" : "#/definitions/collect_samples"
         }
       }
     },
@@ -1200,7 +2120,7 @@
       "type" : "object",
       "properties" : {
         "success" : {
-          "$ref" : "#/definitions/inline_response_200_11_success"
+          "$ref" : "#/definitions/otp_samples"
         }
       }
     },
@@ -1214,7 +2134,7 @@
             "full_name" : "kasa rakesh",
             "address" : "Puppalaguda, manikonda Hyderabad-500089",
             "priority" : "High Priority",
-            "status" : "delivered",
+            "status" : "To Be Picked",
             "sample_type" : "Blood Sample",
             "date_time" : "2023-05-26T12:26:45+05:30",
             "order_id" : "1"
@@ -1223,7 +2143,7 @@
             "full_name" : "Pavan reddy",
             "address" : "Puppalaguda, manikonda Hyderabad-500089",
             "priority" : "High Priority",
-            "status" : "delivered",
+            "status" : "To Be Picked",
             "sample_type" : "Blood Sample",
             "date_time" : "2023-05-26T12:26:45+05:30",
             "order_id" : "2"
@@ -1252,6 +2172,196 @@
             "full_name" : "kasa rakesh",
             "address" : "Puppalaguda, manikonda Hyderabad-500089",
             "priority" : "High Priority",
+            "status" : "rescheduled",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "1"
+          }, {
+            "user_id" : "13",
+            "full_name" : "Pavan reddy",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "rescheduled",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "2"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/todays_list_object"
+          }
+        }
+      }
+    },
+    "inline_response_200_13" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_13_success"
+        }
+      }
+    },
+    "inline_response_200_14_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "user_id" : "12",
+            "full_name" : "kasa rakesh",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "unverified",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "1"
+          }, {
+            "user_id" : "13",
+            "full_name" : "Pavan reddy",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "unverified",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "2"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/todays_list_object"
+          }
+        }
+      }
+    },
+    "inline_response_200_14" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_14_success"
+        }
+      }
+    },
+    "inline_response_200_15_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "user_id" : "12",
+            "full_name" : "kasa rakesh",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "cancelled",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "1"
+          }, {
+            "user_id" : "13",
+            "full_name" : "Pavan reddy",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "cancelled",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "2"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/todays_list_object"
+          }
+        }
+      }
+    },
+    "inline_response_200_15" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_15_success"
+        }
+      }
+    },
+    "inline_response_200_16_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "user_id" : "12",
+            "full_name" : "kasa rakesh",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "delivery pending",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "1"
+          }, {
+            "user_id" : "13",
+            "full_name" : "Pavan reddy",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "delivery pending",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "2"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/todays_list_object"
+          }
+        }
+      }
+    },
+    "inline_response_200_16" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_16_success"
+        }
+      }
+    },
+    "inline_response_200_17_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "user_id" : "12",
+            "full_name" : "kasa rakesh",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "delivered",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "1"
+          }, {
+            "user_id" : "13",
+            "full_name" : "Pavan reddy",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
+            "status" : "delivered",
+            "sample_type" : "Blood Sample",
+            "date_time" : "2023-05-26T12:26:45+05:30",
+            "order_id" : "2"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/todays_list_object"
+          }
+        }
+      }
+    },
+    "inline_response_200_17" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_17_success"
+        }
+      }
+    },
+    "inline_response_200_18_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "user_id" : "12",
+            "full_name" : "kasa rakesh",
+            "address" : "Puppalaguda, manikonda Hyderabad-500089",
+            "priority" : "High Priority",
             "status" : "arrived",
             "sample_type" : "Blood Sample",
             "date_time" : "2023-05-26T12:26:45+05:30",
@@ -1272,15 +2382,15 @@
         }
       }
     },
-    "inline_response_200_13" : {
+    "inline_response_200_18" : {
       "type" : "object",
       "properties" : {
         "success" : {
-          "$ref" : "#/definitions/inline_response_200_13_success"
+          "$ref" : "#/definitions/inline_response_200_18_success"
         }
       }
     },
-    "inline_response_200_14" : {
+    "inline_response_200_19" : {
       "type" : "object",
       "properties" : {
         "response" : {
@@ -1288,7 +2398,7 @@
         }
       }
     },
-    "inline_response_200_15" : {
+    "inline_response_200_20" : {
       "type" : "object",
       "properties" : {
         "response" : {
@@ -1296,7 +2406,7 @@
         }
       }
     },
-    "inline_response_200_16" : {
+    "inline_response_200_21" : {
       "type" : "object",
       "properties" : {
         "success" : {
@@ -1304,7 +2414,7 @@
         }
       }
     },
-    "inline_response_200_17" : {
+    "inline_response_200_22" : {
       "type" : "object",
       "properties" : {
         "success" : {
@@ -1312,7 +2422,7 @@
         }
       }
     },
-    "inline_response_200_18" : {
+    "inline_response_200_23" : {
       "type" : "object",
       "properties" : {
         "success" : {
@@ -1320,11 +2430,190 @@
         }
       }
     },
-    "inline_response_200_19" : {
+    "inline_response_200_24" : {
       "type" : "object",
       "properties" : {
         "success" : {
           "$ref" : "#/definitions/contact_admin"
+        }
+      }
+    },
+    "inline_response_200_25" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/patient_unavailable_details"
+        }
+      }
+    },
+    "inline_response_200_26_success" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "array",
+          "example" : [ {
+            "id" : 1,
+            "name" : "jaman",
+            "phone_number" : "+917997758147",
+            "current_location" : "manikonda,hyderabad",
+            "total_orders_this_month" : 12,
+            "today_assigned_orders" : 10,
+            "status" : "collecting_sample"
+          }, {
+            "id" : 2,
+            "name" : "fghjk",
+            "phone_number" : "+917797758147",
+            "current_location" : "manikonda,hyderabad",
+            "total_orders_this_month" : 100,
+            "today_assigned_orders" : 15,
+            "status" : "delivering_sample"
+          }, {
+            "id" : 3,
+            "name" : "dfrgbk",
+            "phone_number" : "+917990758147",
+            "current_location" : "manikonda,hyderabad",
+            "total_orders_this_month" : 200,
+            "today_assigned_orders" : 10,
+            "status" : "on_way_to_pick"
+          }, {
+            "id" : 4,
+            "name" : "hhhhhhh",
+            "phone_number" : "+917997708147",
+            "current_location" : "manikonda,hyderabad",
+            "total_orders_this_month" : 15,
+            "today_assigned_orders" : 10,
+            "status" : "inactive"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/phlebotomist_list_details"
+          }
+        }
+      }
+    },
+    "inline_response_200_26" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_26_success"
+        }
+      }
+    },
+    "inline_response_200_27" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/order_status"
+        }
+      }
+    },
+    "inline_response_200_28_success" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "username and password shared sucessfully"
+        }
+      }
+    },
+    "inline_response_200_28" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_28_success"
+        }
+      }
+    },
+    "inline_response_200_29_success" : {
+      "type" : "object",
+      "properties" : {
+        "message" : {
+          "type" : "string",
+          "example" : "sucessfully moved to today's list"
+        }
+      }
+    },
+    "inline_response_200_29" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_29_success"
+        }
+      }
+    },
+    "inline_response_201_success" : {
+      "type" : "object",
+      "properties" : {
+        "phlebotomist" : {
+          "$ref" : "#/definitions/phlebotomist"
+        }
+      }
+    },
+    "inline_response_201" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_201_success"
+        }
+      }
+    },
+    "inline_response_200_30_success" : {
+      "type" : "object"
+    },
+    "inline_response_200_30" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_30_success"
+        }
+      }
+    },
+    "inline_response_200_31_success" : {
+      "type" : "object",
+      "properties" : {
+        "phlebotomist" : {
+          "type" : "array",
+          "example" : [ {
+            "phlebotomist_id" : 1,
+            "name" : "pavan",
+            "assigned_orders" : 20,
+            "priority" : "high"
+          }, {
+            "phlebotomist_id" : 2,
+            "name" : "chinmay",
+            "assigned_orders" : 30,
+            "priority" : "high"
+          }, {
+            "phlebotomist_id" : 3,
+            "name" : "kiran",
+            "assigned_orders" : 3,
+            "priority" : "low"
+          }, {
+            "phlebotomist_id" : 4,
+            "name" : "pranay",
+            "assigned_orders" : 10,
+            "priority" : "medium"
+          }, {
+            "phlebotomist_id" : 5,
+            "name" : "sai",
+            "assigned_orders" : 50,
+            "priority" : "high"
+          }, {
+            "phlebotomist_id" : 6,
+            "name" : "sandy",
+            "assigned_orders" : 5,
+            "priority" : "low"
+          } ],
+          "items" : {
+            "$ref" : "#/definitions/search_phlebotomist"
+          }
+        }
+      }
+    },
+    "inline_response_200_31" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "$ref" : "#/definitions/inline_response_200_31_success"
         }
       }
     },
@@ -1556,7 +2845,7 @@
         },
         "lab_address" : {
           "type" : "string",
-          "example" : "Puppalaguda, manikonda Hyderabad-500089"
+          "example" : "Raidurg,Hyderabad-500008"
         },
         "sample" : {
           "type" : "string",
@@ -1613,6 +2902,184 @@
         },
         "user" : {
           "$ref" : "#/definitions/session_user"
+        }
+      }
+    },
+    "patient_unavailable_details_order_details" : {
+      "type" : "object",
+      "properties" : {
+        "order_id" : {
+          "type" : "string",
+          "example" : "123456"
+        },
+        "patient_name" : {
+          "type" : "string",
+          "example" : "harika"
+        },
+        "age" : {
+          "type" : "integer",
+          "example" : 25
+        },
+        "patient_image" : {
+          "type" : "string",
+          "example" : "https://lh3.google.com/u/0/ogw/AOLn63EfbX4VjIYIQpE6N8E8jYIfTM0Cu-4z-g0S81Jm=s32-c-mo"
+        },
+        "status" : {
+          "type" : "string",
+          "example" : "patient_unavailable"
+        },
+        "phone_number" : {
+          "type" : "string",
+          "example" : "+917093018490"
+        },
+        "location" : {
+          "type" : "string",
+          "example" : "golden temple,manikonda-500089"
+        },
+        "date_time" : {
+          "type" : "string",
+          "example" : "2023-05-25 20:56:07 +0530"
+        },
+        "sample_type" : {
+          "type" : "string",
+          "example" : "blood"
+        }
+      }
+    },
+    "patient_unavailable_details_assigned_phlebotomist" : {
+      "type" : "object",
+      "properties" : {
+        "phlebotomist_name" : {
+          "type" : "string",
+          "example" : "ghost"
+        },
+        "phone_number" : {
+          "type" : "string",
+          "example" : "+917997758146"
+        },
+        "profile_image" : {
+          "type" : "string",
+          "example" : "https://lh3.googleusercontent.com/ogw/AOLn63GYQ3uohe6sVntykFZgEXNMx93yaO0hx5Ggy9Cryw=s32-c-mo"
+        },
+        "rating" : {
+          "type" : "number",
+          "example" : 4.2
+        },
+        "reviews" : {
+          "type" : "integer",
+          "example" : 100
+        }
+      }
+    },
+    "order_status_order_status_appintment_booked" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "boolean",
+          "example" : true
+        },
+        "date" : {
+          "type" : "string",
+          "example" : "2023-05-25 20:56:07 +0530"
+        }
+      }
+    },
+    "order_status_order_status_assign_to_phlebotomist" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "boolean",
+          "example" : true
+        },
+        "date" : {
+          "type" : "string",
+          "example" : "2023-05-22 20:56:07 +0530"
+        }
+      }
+    },
+    "order_status_order_status_delivered_to_lab" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "boolean",
+          "example" : true
+        },
+        "date" : {
+          "type" : "string",
+          "example" : "2023-05-23 20:56:07 +0530"
+        }
+      }
+    },
+    "order_status_order_status_authorized" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "boolean",
+          "example" : true
+        },
+        "date" : {
+          "type" : "string",
+          "example" : "2023-05-24 20:56:07 +0530"
+        }
+      }
+    },
+    "order_status_order_status_est_delivery_time" : {
+      "type" : "object",
+      "properties" : {
+        "date" : {
+          "type" : "string",
+          "example" : "2023-05-25 20:56:07 +0530"
+        }
+      }
+    },
+    "order_status_order_status" : {
+      "type" : "object",
+      "properties" : {
+        "order_id" : {
+          "type" : "string",
+          "example" : "123456"
+        },
+        "appintment_booked" : {
+          "$ref" : "#/definitions/order_status_order_status_appintment_booked"
+        },
+        "assign_to_phlebotomist" : {
+          "$ref" : "#/definitions/order_status_order_status_assign_to_phlebotomist"
+        },
+        "sample_collected" : {
+          "$ref" : "#/definitions/order_status_order_status_assign_to_phlebotomist"
+        },
+        "delivered_to_lab" : {
+          "$ref" : "#/definitions/order_status_order_status_delivered_to_lab"
+        },
+        "authorized" : {
+          "$ref" : "#/definitions/order_status_order_status_authorized"
+        },
+        "dispatched" : {
+          "$ref" : "#/definitions/order_status_order_status_appintment_booked"
+        },
+        "est_delivery_time" : {
+          "$ref" : "#/definitions/order_status_order_status_est_delivery_time"
+        }
+      }
+    },
+    "assign_phlebotomist_order_details" : {
+      "type" : "object",
+      "properties" : {
+        "order_id" : {
+          "type" : "string",
+          "example" : "33333"
+        },
+        "status" : {
+          "type" : "string",
+          "example" : "to_be_picked"
+        },
+        "priority" : {
+          "type" : "string",
+          "example" : "high"
+        },
+        "lab_location" : {
+          "type" : "string",
+          "example" : "h.no: 12,Raidurgam,Hyderabad,Telangana-500089"
         }
       }
     }
